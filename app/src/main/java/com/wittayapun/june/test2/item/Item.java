@@ -1,7 +1,5 @@
 package com.wittayapun.june.test2.item;
 
-
-
 public class Item{
     int id;
     String Exer_name;
