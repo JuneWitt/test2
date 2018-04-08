@@ -10,9 +10,11 @@ import com.wittayapun.june.test2.R;
 public class SetViewHolder extends RecyclerView.ViewHolder{
 
     public TextView txt_Exer_Name;
+    //public ImageView Icon; // New
 
     public SetViewHolder(View itemView) {
         super(itemView);
         txt_Exer_Name = itemView.findViewById(R.id.txtShowNameExer);
+        //Icon = itemView.findViewById(R.id.imvExer);// New
     }
 }

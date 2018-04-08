@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wittayapun.june.test2.OnTapListener;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
@@ -15,13 +14,12 @@ import com.wittayapun.june.test2.item.SetViewHolder;
 import java.util.Collections;
 import java.util.List;
 
-public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
+public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
+
     private Activity activity;
     List<Item> items = Collections.emptyList();
 
-    private OnTapListener onTapListener;
-
-    public ChestAdapter (Activity activity, List<Item> items) {
+    public BackAdapter(Activity activity, List<Item> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -29,34 +27,25 @@ public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
     @NonNull
     @Override
     public SetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_list_item_back, parent, false);
         return new SetViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
-        holder.txt_Exer_Name.setText(items.get(position).getExer_name());   //  Name list
-        //holder.Icon.setImageResource(position); // New Icon on list
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+    public void onBindViewHolder(@NonNull SetViewHolder holder, int position) {
+        holder.txt_Exer_Name.setText(items.get(position).getExer_name());
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onTapListener != null){
                     onTapListener.OnTapView(position);
                 }
             }
-        });
+        });  */
     }
 
     @Override
     public int getItemCount() {
         return items.size();
     }
-
-    public  void setOnTapListener(OnTapListener onTapListener){
-        this.onTapListener = onTapListener;
-    }
-
-    //  NEW Latest
-
-
 }

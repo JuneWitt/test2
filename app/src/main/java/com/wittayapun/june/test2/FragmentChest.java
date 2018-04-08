@@ -1,7 +1,6 @@
 package com.wittayapun.june.test2;
 
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,19 +26,18 @@ public class FragmentChest extends Fragment {
     View view;
     private RecyclerView recyclerView;
     private DatabaseHelper databaseHelper;
-    private ArrayList<Item> arrayList = new ArrayList<Item>();
+    private ArrayList<Item> chestList = new ArrayList<Item>();
     private Cursor cursor;
     private ChestAdapter adapter;
 
     public FragmentChest() {
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.chest_fragment, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycle_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.chest_recyclerview);
         loadDatabase();
         return view;
     }
@@ -58,7 +58,8 @@ public class FragmentChest extends Fragment {
                     do {
                         Item item = new Item();
                         item.setExer_name(cursor.getString(1));
-                        arrayList.add(item);
+                        //item.setIcon(cursor.getBlob(4));   // test New
+                        chestList.add(item);
                     } while (cursor.moveToNext());
                 }
             }
@@ -67,8 +68,8 @@ public class FragmentChest extends Fragment {
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        adapter = new ChestAdapter(getActivity(), arrayList);
-        adapter.notifyDataSetChanged();
+        adapter = new ChestAdapter(getActivity(), chestList);
+        //adapter.notifyDataSetChanged();
         adapter.setOnTapListener(new OnTapListener() {
             @Override
             public void OnTapView(int position) {

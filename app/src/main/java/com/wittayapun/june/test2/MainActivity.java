@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
         appBarLayout = (AppBarLayout)findViewById(R.id.appbarid);
         viewPager = (ViewPager)findViewById(R.id.viewpager_id);
+        viewPager.setOffscreenPageLimit(7);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         //  Adding Fragment
         adapter.AddFragment(new FragmentChest(),"CHEST");
@@ -28,10 +29,9 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new FragmentAbs(),"ABS");
         adapter.AddFragment(new FragmentArms(),"ARMS");
         adapter.AddFragment(new FragmentLeg(),"LEGS");
-        adapter.AddFragment(new FragmentCalf(),"CALFS");
+        adapter.AddFragment(new FragmentCalf(),"CALF");
         //adapter Setup
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
     }
 }

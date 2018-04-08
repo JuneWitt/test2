@@ -6,10 +6,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.FilterOutputStream;
 import java.io.IOException;
@@ -98,5 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor QueryData(String query){
         return myDatabase.rawQuery(query, null);
     }
+
+
 }
 

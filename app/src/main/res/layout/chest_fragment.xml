@@ -10,8 +10,10 @@
         android:text="chest fragment" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle_view"
+        android:id="@+id/chest_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:background="@color/tabbindicatorcolor">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

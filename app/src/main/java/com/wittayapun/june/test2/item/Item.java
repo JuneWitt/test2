@@ -1,10 +1,11 @@
 package com.wittayapun.june.test2.item;
 
 public class Item{
-    int id;
-    String Exer_name;
-    String M_Group;
+    private int id;
+    private String Exer_name;
+    //private int Icon;
 
+    //  getter
     public int getId() {
         return id;
     }
@@ -17,15 +18,17 @@ public class Item{
         return Exer_name;
     }
 
+        //  setter
     public void setExer_name(String exer_name) {
         Exer_name = exer_name;
     }
 
-    public String getM_Group() {
-        return M_Group;
-    }
+    /*
+    public int getIcon() {
+        return Icon;
+    }   // New
 
-    public void setM_Group(String m_Group) {
-        M_Group = m_Group;
-    }
+    public void setIcon(int Icon) {
+        Icon = Icon;
+    }   //  New */
 }
