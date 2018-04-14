@@ -1,12 +1,20 @@
 package com.wittayapun.june.test2.item.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
+import com.wittayapun.june.test2.ChestDetailActivity;
+import com.wittayapun.june.test2.DatabaseHelper;
 import com.wittayapun.june.test2.OnTapListener;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
@@ -18,10 +26,11 @@ import java.util.List;
 public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
     private Activity activity;
     List<Item> items = Collections.emptyList();
+    static DatabaseHelper databaseHelper;
 
     private OnTapListener onTapListener;
 
-    public ChestAdapter (Activity activity, List<Item> items) {
+    public ChestAdapter(Activity activity, List<Item> items) {
         this.activity = activity;
         this.items = items;
     }
@@ -40,9 +49,13 @@ public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (onTapListener != null){
+                /*if (onTapListener != null){
                     onTapListener.OnTapView(position);
-                }
+                }*/
+
+                Context context = view.getContext();
+                Intent chestintent = new Intent(context, ChestDetailActivity.class);
+                context.startActivity(chestintent);
             }
         });
     }
@@ -55,8 +68,4 @@ public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
     public  void setOnTapListener(OnTapListener onTapListener){
         this.onTapListener = onTapListener;
     }
-
-    //  NEW Latest
-
-
 }

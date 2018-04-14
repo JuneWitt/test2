@@ -37,11 +37,8 @@ public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
         /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (onTapListener != null){
-                    onTapListener.OnTapView(position);
-                }
             }
-        });  */
+        });     */
     }
 
     @Override

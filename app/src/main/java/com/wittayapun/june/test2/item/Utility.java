@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 
 import java.io.ByteArrayOutputStream;
 
+// ยังไม่ได้ใช้
 public class Utility {
     // convert from bitmap to byte array
     public static byte[] Icon(Bitmap bitmap) {
