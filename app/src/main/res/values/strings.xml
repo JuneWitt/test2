@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">test2</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="ท่าออกกำลังกายที่เหมาะสม">item1</string>
+    <string name="คำนวณดัชนีมวลกาย">item2</string>
+    <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">item3</string>
+    <string name="น้ำหนักที่เหมาสมกับส่วนสูง">item4</string>
+    <string name="พลังงานที่ต้องการในแต่ละวัน">item5</string>
 </resources>

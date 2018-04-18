@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
@@ -32,13 +33,15 @@ public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SetViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
         holder.txt_Exer_Name.setText(items.get(position).getExer_name());
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(),"positio = "+ position,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(view.getContext(),"position = "+ position ,Toast.LENGTH_SHORT).show();
             }
-        });     */
+        });
     }
 
     @Override

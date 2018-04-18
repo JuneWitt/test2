@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.wittayapun.june.test2.ChestDetailActivity;
 import com.wittayapun.june.test2.DatabaseHelper;
@@ -20,19 +21,24 @@ import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
+public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder>{
+
     private Activity activity;
     List<Item> items = Collections.emptyList();
-    static DatabaseHelper databaseHelper;
+    private DatabaseHelper databaseHelper;
+    private ArrayList<Item> chestList = new ArrayList<Item>();
+    private Context context;
 
     private OnTapListener onTapListener;
 
-    public ChestAdapter(Activity activity, List<Item> items) {
+    public ChestAdapter(Activity activity, List<Item> items,Context context) {
         this.activity = activity;
         this.items = items;
+        this.context = context;
     }
 
     @NonNull
@@ -45,17 +51,18 @@ public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
         holder.txt_Exer_Name.setText(items.get(position).getExer_name());   //  Name list
-        //holder.Icon.setImageResource(position); // New Icon on list
+        //holder.person_name.setText(list.get(position).getName());
+        //holder.person_img.setImageResource(items.get(position).getPhoto_id()); getIcon // New Icon on list
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*if (onTapListener != null){
-                    onTapListener.OnTapView(position);
-                }*/
+                //Toast.makeText(view.getContext(),"position = "+ position ,Toast.LENGTH_SHORT).show();
 
-                Context context = view.getContext();
-                Intent chestintent = new Intent(context, ChestDetailActivity.class);
-                context.startActivity(chestintent);
+                Item clickItemRecycler = items.get(position);
+                long itemsID = clickItemRecycler.getId();
+                Intent chestIntent = new Intent(view.getContext(),ChestDetailActivity.class);
+                chestIntent.putExtra("ID", view.getId());
+                view.getContext().startActivities(new Intent[]{chestIntent});
             }
         });
     }

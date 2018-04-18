@@ -1,27 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ChestDetailActivity">
 
+    <RelativeLayout
+        android:id="@+id/ShowDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center"/>
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/txtExerName"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gif_view"/>
 
-    <ListView
-        android:id="@+id/ShowDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <ScrollView
+            android:layout_below="@+id/txtExerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/Detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+            <TextView
+
+                android:id="@+id/headerM_MainGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:background="@color/colorAccent"
+                android:layout_below="@+id/txtExerName"/>
+
+            <TextView
+            android:id="@+id/txtShowM_MainGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerM_MainGroup"
+            android:text="M_MainGroup"/>
+
+            <TextView
+            android:id="@+id/headerM_SecondGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowM_MainGroup"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+            <TextView
+            android:id="@+id/txtShowM_SecondGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerM_SecondGroup"
+            android:text="M_SecondGroup"/>
+
+            <TextView
+            android:id="@+id/headerEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowM_SecondGroup"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+            <TextView
+            android:id="@+id/txtShowEquipment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerEquipment"
+            android:text="M_MainGroup"/>
+
+            <TextView
+            android:id="@+id/headerPosture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowEquipment"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+            <TextView
+            android:id="@+id/txtShowPosture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerPosture"
+            android:text="Posture"/>
+
+            <TextView
+            android:id="@+id/headerContraction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowPosture"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+            <TextView
+            android:id="@+id/txtShowM_Contraction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerContraction"
+            android:text="M_Contraction"/>
+
+            <TextView
+            android:id="@+id/headerRepSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowM_Contraction"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+            <TextView
+            android:id="@+id/txtShowRepSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerRepSet"
+            android:text="RepSet"/>
+
+            <TextView
+            android:id="@+id/headerRestTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtShowRepSet"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorAccent"/>
+
+            <TextView
+            android:id="@+id/txtShowRestTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerRestTime"
+            android:text="RestTime"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/toolbar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"></android.support.design.widget.BottomNavigationView>
+</android.support.design.widget.CoordinatorLayout>

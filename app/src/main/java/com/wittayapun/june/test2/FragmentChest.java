@@ -1,5 +1,7 @@
 package com.wittayapun.june.test2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.wittayapun.june.test2.item.Adapter.ChestAdapter;
@@ -54,7 +57,6 @@ public class FragmentChest extends Fragment {
                     do {
                         Item item = new Item();
                         item.setExer_name(cursor.getString(1));
-                        //item.setIcon(cursor.getBlob(4));   // test New
                         chestList.add(item);
                     } while (cursor.moveToNext());
                 }
@@ -64,12 +66,13 @@ public class FragmentChest extends Fragment {
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        adapter = new ChestAdapter(getActivity(), chestList);
+        adapter = new ChestAdapter(getActivity(), chestList, getContext());
         //adapter.notifyDataSetChanged();
+
         adapter.setOnTapListener(new OnTapListener() {
             @Override
-            public void OnTapView(int position) {
-                Toast.makeText(getContext(), "Click to " + position, Toast.LENGTH_SHORT).show();
+            public void OnTapView(View view, int position) {
+
             }
         });
         recyclerView.setHasFixedSize(true);

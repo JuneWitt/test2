@@ -6,7 +6,7 @@ public class Item{
     //private int Icon;
 
     //  getter
-    public int getId() {
+    public long getId() {
         return id;
     }
 
