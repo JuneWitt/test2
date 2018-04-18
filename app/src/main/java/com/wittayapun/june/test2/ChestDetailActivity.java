@@ -25,7 +25,6 @@ public class ChestDetailActivity extends Activity {
 
         //RECEIVE DATA FROM FragmentChest(context)
 
-
         //  ASSIGN DATA TO THOSE VIEWS
         //Toast.makeText(getApplicationContext(),"position = "+ id,Toast.LENGTH_SHORT).show();
 
