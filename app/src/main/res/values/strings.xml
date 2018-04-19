@@ -3,6 +3,7 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="คำนวณ"></string>
     <string name="ท่าออกกำลังกายที่เหมาะสม">item1</string>
     <string name="คำนวณดัชนีมวลกาย">item2</string>
     <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">item3</string>

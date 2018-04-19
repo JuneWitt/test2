@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class ChestDetailActivity extends Activity {
 
     private DatabaseHelper databaseHelper;
-    private TextView txtExerName,txtShowM_MainGroup,txtShowM_SecondGroup,txtShowEquipment,txtShowPosture,txtShowM_Contraction,txtShowRepSet,txtShowRestTime;
+    private TextView tvExerName,tvShowM_MainGroup,tvShowM_SecondGroup,tvShowEquipment,tvShowPosture,tvShowM_Contraction,tvShowRepSet,tvShowRestTime;
     long itemsID;
 
     @Override
@@ -18,26 +18,55 @@ public class ChestDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chest_detail);
 
+        //RECEIVE DATA FROM FragmentChest
+//        itemsID = getIntent().getStringExtra("ID");
+        Toast.makeText(this, getIntent().getStringExtra("ID") + "", Toast.LENGTH_SHORT).show();
 
-        itemsID = getIntent().getExtras().getLong("ID",0);
-        //Intent chestintent = getIntent();a
-        //itemsID = chestintent.getExtras().getInt("ID");a
-
-        //RECEIVE DATA FROM FragmentChest(context)
+        Intent chestintent = getIntent();
+        itemsID = chestintent.getExtras().getInt("ID");
+        //itemsID = chestintent.getLongExtra("ID",0);
 
         //  ASSIGN DATA TO THOSE VIEWS
-        //Toast.makeText(getApplicationContext(),"position = "+ id,Toast.LENGTH_SHORT).show();
+        tvExerName = findViewById(R.id.txtExerName);
+        tvShowM_MainGroup = findViewById(R.id.txtShowM_MainGroup);
+        tvShowM_SecondGroup = findViewById(R.id.txtShowM_SecondGroup);
+        tvShowEquipment = findViewById(R.id.txtShowEquipment);
+        tvShowPosture = findViewById(R.id.txtShowPosture);
+        tvShowM_Contraction = findViewById(R.id.txtShowM_Contraction);
+        tvShowRepSet = findViewById(R.id.txtShowRepSet);
+        tvShowRestTime = findViewById(R.id.txtShowRestTime);
 
         databaseHelper = new DatabaseHelper(this);
         databaseHelper.openDatabase();
+        databaseHelper.getReadableDatabase();
+        Cursor detail = databaseHelper.QueryData("select * from Exer_Describtion");
+
+        //int db_id = detail.getInt(1);
+        if (itemsID > 0) {
+            Toast pass = Toast.makeText(this, "Now your ID can use: " + itemsID, Toast.LENGTH_SHORT);
+            pass.show();
+            do {
+                //tvExerName.setText(detail.getString(1));
+                tvExerName.setText(detail.getString(detail.getColumnIndex("Exer_Name")));
+                tvShowM_MainGroup.setText(detail.getString(detail.getColumnIndex("M_MainGroup")));
+                tvShowM_SecondGroup.setText(detail.getString(detail.getColumnIndex("M_SecondaryGroup")));
+                tvShowEquipment.setText(detail.getString(detail.getColumnIndex("Equipment")));
+                tvShowPosture.setText(detail.getString(detail.getColumnIndex("Posture")));
+                tvShowM_Contraction.setText(detail.getString(detail.getColumnIndex("M_Contraction")));
+                tvShowRepSet.setText(detail.getString(detail.getColumnIndex("RepAndSet")));
+                tvShowRestTime.setText(detail.getString(detail.getColumnIndex("RestTime")));
+                //Toast.makeText(this,detail.getString(1)+"zzz",Toast.LENGTH_LONG).show();
+            }
+            while (detail.moveToNext());
+        } else {
+            Toast error = Toast.makeText(this, "Now cannot use your ID so sad ", Toast.LENGTH_SHORT);
+            error.show();
+        }
+    }
+}
 
 
-
-        //if (itemsID > 0) {
-            Cursor detail = databaseHelper.QueryData("select * from Exer_Describtion");
-            int rows = detail.getCount();
-            detail.moveToFirst();
-
+        //detail.close();
 
         /*for(int i=0;i<rows;i++) {
 
@@ -47,12 +76,6 @@ public class ChestDetailActivity extends Activity {
                 //here You can get all details you need
 
                 break;
-            }
-        }*/
+            }*/
 
-        init();
-    }
 
-    private void init() {
-    }
-}

@@ -21,7 +21,7 @@ import com.wittayapun.june.test2.item.Item;
 
 import java.util.ArrayList;
 
-public class FragmentChest extends Fragment {
+public class FragmentChest extends Fragment implements OnTapListener {
     View view;
     private RecyclerView recyclerView;
     private DatabaseHelper databaseHelper;
@@ -42,41 +42,45 @@ public class FragmentChest extends Fragment {
     }
 
     public void loadDatabase() {
-        databaseHelper = new DatabaseHelper(getActivity());
-        try {
-            databaseHelper.checkAndCopyDatabase();
-            databaseHelper.openDatabase();
-        } catch (SQLiteException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            cursor = databaseHelper.QueryData("select * from Exer_list where M_Group = 'Chest'");
-            if (cursor != null) {
-                if (cursor.moveToFirst()) {
-                    do {
-                        Item item = new Item();
-                        item.setExer_name(cursor.getString(1));
-                        chestList.add(item);
-                    } while (cursor.moveToNext());
-                }
+            databaseHelper = new DatabaseHelper(getActivity());
+            try {
+                databaseHelper.checkAndCopyDatabase();
+                databaseHelper.openDatabase();
+            } catch (SQLiteException e) {
+                e.printStackTrace();
             }
-        } catch (SQLiteException e) {
-            e.printStackTrace();
-        }
+
+            try {
+                cursor = databaseHelper.QueryData("select * from Exer_list where M_Group = 'Chest'");
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        do {
+                            Item item = new Item();
+                            item.setExer_name(cursor.getString(1));
+                            item.setId(cursor.getInt(0));
+                            //setId ยังไม่ได้๔ุกกำหนดค่า ตอนนี้กำหนดแค่ setExer_name มันเลยได้ 0
+                            chestList.add(item);
+                        } while (cursor.moveToNext());
+                    }
+                }
+            } catch (SQLiteException e) {
+                e.printStackTrace();
+            }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        adapter = new ChestAdapter(getActivity(), chestList, getContext());
-        //adapter.notifyDataSetChanged();
-
-        adapter.setOnTapListener(new OnTapListener() {
-            @Override
-            public void OnTapView(View view, int position) {
-
-            }
-        });
+        adapter = new ChestAdapter(getActivity(), chestList, getContext(), this);
+        adapter.notifyDataSetChanged();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void OnTapView(View view, int position) {
+//        Toast.makeText(getActivity(), chestList.get(position).getId()+"",Toast.LENGTH_SHORT).show();
+        Intent chestIntent = new Intent(getActivity(),ChestDetailActivity.class);
+        chestIntent.putExtra("ID",chestList.get(position).getId()+"");
+        startActivity(chestIntent);
+        // try to run and pray!!!
     }
 }
