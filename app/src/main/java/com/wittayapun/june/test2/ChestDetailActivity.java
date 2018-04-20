@@ -22,8 +22,7 @@ public class ChestDetailActivity extends Activity {
         @Override
         public void onStart () {
             super.onStart();
-            //RECEIVE DATA FROM FragmentChest
-            //USE DATABASE
+            //RECEIVE DATA FROM FragmentChest USE to DATABASE
             databaseHelper = new DatabaseHelper(this);
             //databaseHelper.openDatabase();
             SQLiteDatabase db = databaseHelper.getReadableDatabase();
