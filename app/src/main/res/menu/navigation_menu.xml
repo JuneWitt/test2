@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:title="Recomment">
+    <item
+        android:id="@+id/item1"
+        android:title="ท่าออกกำลังกายที่เหมาะสม"
+        app:showAsAction ="never"/>
+
+</item>
+
+
+<item android:title="@string/คำนวณ">
+    <item
+        android:id="@+id/item2"
+        android:title="คำนวณดัชนีมวลกาย" />
+    <item
+        android:id="@+id/item3"
+        android:title="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย"/>
+    <item
+        android:id="@+id/item4"
+        android:title="น้ำหนักที่เหมาสมกับส่วนสูง"
+        />
+    <item
+        android:id="@+id/item5"
+        android:title="พลังงานที่ต้องการในแต่ละวัน"/>
+</item>
+
+</menu>
