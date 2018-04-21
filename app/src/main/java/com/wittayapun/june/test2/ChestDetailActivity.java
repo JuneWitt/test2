@@ -50,7 +50,6 @@ public class ChestDetailActivity extends Activity {
 
                 if (cursor.moveToNext()) {
                 //ID = bundle.getInt()
-                    //int db_id = cursor.getInt(0);
                     Toast.makeText(this, "Now your ID is: " + ID, Toast.LENGTH_SHORT).show();
 
                     tvExerName.setText(cursor.getString(1));
