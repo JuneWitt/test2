@@ -1,6 +1,7 @@
 package com.wittayapun.june.test2.item.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.wittayapun.june.test2.DatabaseHelper;
+import com.wittayapun.june.test2.OnTapListener;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
@@ -19,10 +22,16 @@ public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
 
     private Activity activity;
     List<Item> items = Collections.emptyList();
+    private DatabaseHelper databaseHelper;
+    private Context context;
 
-    public BackAdapter(Activity activity, List<Item> items) {
+    private OnTapListener onTapListener;
+
+    public BackAdapter(Activity activity, List<Item> items, Context context, OnTapListener onTapListener) {
         this.activity = activity;
         this.items = items;
+        this.context = context;
+        this.onTapListener = onTapListener;
     }
 
     @NonNull
@@ -38,8 +47,7 @@ public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"positio = "+ position,Toast.LENGTH_SHORT).show();
-                //Toast.makeText(view.getContext(),"position = "+ position ,Toast.LENGTH_SHORT).show();
+                onTapListener.OnTapView(view,position);
             }
         });
     }
@@ -47,5 +55,9 @@ public class BackAdapter extends RecyclerView.Adapter<SetViewHolder> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setOnTapListener(OnTapListener onTapListener){
+        this.onTapListener = onTapListener;
     }
 }

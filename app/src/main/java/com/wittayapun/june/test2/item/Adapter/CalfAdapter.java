@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wittayapun.june.test2.OnTapListener;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
@@ -17,10 +18,12 @@ import java.util.List;
 public class CalfAdapter extends RecyclerView.Adapter<SetViewHolder> {
     private Activity activity;
     List<Item> items = Collections.emptyList();
+    private OnTapListener onTapListener;
 
-    public CalfAdapter(Activity activity, List<Item> items) {
+    public CalfAdapter(Activity activity, List<Item> items, OnTapListener onTapListener) {
         this.activity = activity;
         this.items = items;
+        this.onTapListener = onTapListener;
     }
 
     @NonNull
@@ -31,12 +34,22 @@ public class CalfAdapter extends RecyclerView.Adapter<SetViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SetViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
         holder.txt_Exer_Name.setText(items.get(position).getExer_name());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTapListener.OnTapView(view,position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setOnTapListener(OnTapListener onTapListener) {
+        this.onTapListener = onTapListener;
     }
 }

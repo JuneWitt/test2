@@ -1,5 +1,6 @@
 package com.wittayapun.june.test2;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.wittayapun.june.test2.item.Item;
 
 import java.util.ArrayList;
 
-public class FragmentBack extends Fragment {
+public class FragmentBack extends Fragment implements OnTapListener{
     View view;
     private RecyclerView recyclerView;
     private DatabaseHelper databaseHelper;
@@ -54,6 +55,8 @@ public class FragmentBack extends Fragment {
                     do {
                         Item item = new Item();
                         item.setExer_name(cursor.getString(1));
+                        item.setId(cursor.getInt(0));
+
                         backList.add(item);
                     } while (cursor.moveToNext());
                 }
@@ -63,16 +66,17 @@ public class FragmentBack extends Fragment {
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        adapter = new BackAdapter(getActivity(), backList); // Make list with Adapter
-        /*adapter.setOnTapListener(new OnTapListener() {
-            @Override
-            public void OnTapView(int position) {
-                Toast.makeText(getContext(), "Click to " + position, Toast.LENGTH_SHORT).show();
-            }
-        });             */
-
+        adapter = new BackAdapter(getActivity(), backList, getContext(),this); // Make list with Adapter
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void OnTapView(View view, int position) {
+        Intent backIntent = new Intent(getActivity(),ChestDetailActivity.class);
+        backIntent.putExtra("ID",backList.get(position).getId()+"");
+        Toast.makeText(getActivity(),backList.get(position).getId()+"",Toast.LENGTH_SHORT).show();
+        startActivity(backIntent);
     }
 }

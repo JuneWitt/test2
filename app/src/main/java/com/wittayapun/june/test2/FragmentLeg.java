@@ -1,5 +1,6 @@
 package com.wittayapun.june.test2;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import com.wittayapun.june.test2.item.Item;
 
 import java.util.ArrayList;
 
-public class FragmentLeg extends Fragment {
+public class FragmentLeg extends Fragment implements OnTapListener{
     View view;
     private RecyclerView recyclerView;
     private DatabaseHelper databaseHelper;
@@ -53,6 +54,8 @@ public class FragmentLeg extends Fragment {
                     do {
                         Item item = new Item();
                         item.setExer_name(cursor.getString(1));
+                        item.setId(cursor.getInt(0));
+
                         legsList.add(item);
                     } while (cursor.moveToNext());
                 }
@@ -62,10 +65,16 @@ public class FragmentLeg extends Fragment {
         }
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        adapter = new LegsAdapter(getActivity(), legsList);
-
+        adapter = new LegsAdapter(getActivity(), legsList,this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void OnTapView(View view, int position) {
+        Intent legIntent = new Intent(getActivity(),ChestDetailActivity.class);
+        legIntent.putExtra("ID",legsList.get(position).getId()+"");
+        startActivity(legIntent);
     }
 }

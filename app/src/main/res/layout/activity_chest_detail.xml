@@ -26,15 +26,15 @@
         <ScrollView
             android:layout_below="@+id/txtExerName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="365dp">
 
             <LinearLayout
                 android:id="@+id/Detail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <TextView
 
+            <TextView
                 android:id="@+id/headerM_MainGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

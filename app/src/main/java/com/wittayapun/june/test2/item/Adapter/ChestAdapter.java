@@ -80,7 +80,7 @@ public class ChestAdapter extends RecyclerView.Adapter<SetViewHolder> {
         return items.size();
     }
 
-    public  void setOnTapListener(OnTapListener onTapListener){
+    public void setOnTapListener(OnTapListener onTapListener){
         this.onTapListener = onTapListener;
     }
 }

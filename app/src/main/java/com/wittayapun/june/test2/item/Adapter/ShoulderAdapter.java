@@ -1,12 +1,14 @@
 package com.wittayapun.june.test2.item.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.wittayapun.june.test2.OnTapListener;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
@@ -18,11 +20,16 @@ import java.util.List;
 public class ShoulderAdapter extends RecyclerView.Adapter<SetViewHolder>{
     private Activity activity;
     List<Item> items = Collections.emptyList();
+    private Context context;
+
+    private OnTapListener onTapListener;
 
 
-    public ShoulderAdapter(Activity activity, List<Item> items) {
+    public ShoulderAdapter(Activity activity, List<Item> items,Context context, OnTapListener onTapListener) {
         this.activity = activity;
         this.items = items;
+        this.context = context;
+        this.onTapListener = onTapListener;
     }
 
     @NonNull
@@ -33,12 +40,22 @@ public class ShoulderAdapter extends RecyclerView.Adapter<SetViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SetViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
         holder.txt_Exer_Name.setText(items.get(position).getExer_name());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTapListener.OnTapView(view,position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setOnTapListener(OnTapListener onTapListener) {
+        this.onTapListener = onTapListener;
     }
 }
