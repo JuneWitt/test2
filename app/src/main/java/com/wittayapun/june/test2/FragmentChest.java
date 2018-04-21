@@ -58,7 +58,7 @@ public class FragmentChest extends Fragment implements OnTapListener {
                             Item item = new Item();
                             item.setExer_name(cursor.getString(1));
                             item.setId(cursor.getInt(0));
-                            //setId ยังไม่ได้๔ุกกำหนดค่า ตอนนี้กำหนดแค่ setExer_name มันเลยได้ 0
+
                             chestList.add(item);
                         } while (cursor.moveToNext());
                     }
@@ -77,10 +77,10 @@ public class FragmentChest extends Fragment implements OnTapListener {
 
     @Override
     public void OnTapView(View view, int position) {
-//        Toast.makeText(getActivity(), chestList.get(position).getId()+"",Toast.LENGTH_SHORT).show();
+
         Intent chestIntent = new Intent(getActivity(),ChestDetailActivity.class);
         chestIntent.putExtra("ID",chestList.get(position).getId()+"");
+        Toast.makeText(getActivity(), chestList.get(position).getId()+"",Toast.LENGTH_SHORT).show();
         startActivity(chestIntent);
-        // try to run and pray!!!
     }
 }
