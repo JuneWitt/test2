@@ -8,12 +8,13 @@
     android:orientation="vertical"
     android:id="@+id/drawer_layout">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+       <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
@@ -27,7 +28,6 @@
             android:src="@drawable/workout"/>
     </android.support.design.widget.AppBarLayout>
 
-
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,12 +38,11 @@
         app:tabIndicatorColor="@color/tabbindicatorcolor"
         android:background="@color/colorPrimary"/>
 
-
-    <android.support.v4.view.ViewPager
+        <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
     </LinearLayout>
-
+    <include layout="@layout/floatactionbt"/>
 </android.support.v4.widget.DrawerLayout>

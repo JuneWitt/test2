@@ -4,9 +4,9 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="คำนวณ"></string>
-    <string name="ท่าออกกำลังกายที่เหมาะสม">item1</string>
-    <string name="คำนวณดัชนีมวลกาย">item2</string>
-    <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">item3</string>
-    <string name="น้ำหนักที่เหมาสมกับส่วนสูง">item4</string>
-    <string name="พลังงานที่ต้องการในแต่ละวัน">item5</string>
+    <string name="ท่าออกกำลังกายที่เหมาะสม">ท่าออกกำลังกายที่เหมาะสม</string>
+    <string name="คำนวณดัชนีมวลกาย">คำนวณดัชนีมวลกาย</string>
+    <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">คำนวณเปอร์เซ็นต์ไขมันในร่างกาย</string>
+    <string name="น้ำหนักที่เหมาสมกับส่วนสูง">น้ำหนักที่เหมาสมกับส่วนสูง</string>
+    <string name="พลังงานที่ต้องการในแต่ละวัน">พลังงานที่ต้องการในแต่ละวัน</string>
 </resources>
