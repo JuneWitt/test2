@@ -34,7 +34,7 @@ public class ChestDetailActivity extends Activity {
             String sql = "SELECT * FROM Exer_Describtion" +
                     " WHERE Exer_ID = " + ID;
 
-            Cursor cursor = db.rawQuery(sql,null);
+            Cursor cursor = db.rawQuery(sql, null);
             //Cursor detail = databaseHelper.QueryData("select * from Exer_Describtion");
 
             //  ASSIGN DATA TO THOSE VIEWS
@@ -48,24 +48,24 @@ public class ChestDetailActivity extends Activity {
             tvShowRepSet = findViewById(R.id.txtShowRepSet);
             tvShowRestTime = findViewById(R.id.txtShowRestTime);
 
-                if (cursor.moveToNext()) {
+            if (cursor.moveToNext()) {
                 //ID = bundle.getInt()
-                    Toast.makeText(this, "Now your ID is: " + ID, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Now your ID is: " + ID, Toast.LENGTH_SHORT).show();
 
-                    tvExerName.setText(cursor.getString(1));
-                    //Gifpath.setImageBitmap(getImage(curcor.getBlob(3)));
-                    tvShowM_MainGroup.setText(cursor.getString(3));
-                    tvShowM_SecondGroup.setText(cursor.getString(4));
-                    tvShowEquipment.setText(cursor.getString(5));
-                    tvShowPosture.setText(cursor.getString(6));
-                    tvShowM_Contraction.setText(cursor.getString(7));
-                    tvShowRepSet.setText(cursor.getString(8));
-                    tvShowRestTime.setText(cursor.getString(9));
-                } else {
-                    Toast.makeText(this,"Query fail try again",Toast.LENGTH_SHORT).show();
-                }
-                cursor.close();
-    }
+                tvExerName.setText(cursor.getString(1));
+                //Gifpath.setImageBitmap(getImage(curcor.getBlob(3)));
+                tvShowM_MainGroup.setText(cursor.getString(3));
+                tvShowM_SecondGroup.setText(cursor.getString(4));
+                tvShowEquipment.setText(cursor.getString(5));
+                tvShowPosture.setText(cursor.getString(6));
+                tvShowM_Contraction.setText(cursor.getString(7));
+                tvShowRepSet.setText(cursor.getString(8));
+                tvShowRestTime.setText(cursor.getString(9));
+            } else {
+                Toast.makeText(this, "Query fail try again", Toast.LENGTH_SHORT).show();
+            }
+            cursor.close();
+        }
 }
     //  itemsID = getIntent().getStringExtra("ID");
     //Toast.makeText(this, getIntent().getStringExtra("ID") + "", Toast.LENGTH_SHORT).show();

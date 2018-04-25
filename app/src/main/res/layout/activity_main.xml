@@ -36,7 +36,7 @@
         android:id="@+id/tablayout_id"
         app:tabTextColor="@color/tabtextcolor"
         app:tabIndicatorColor="@color/tabbindicatorcolor"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 
         <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_id"

@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.wittayapun.june.test2.In_Navigation_Menu.Bmi_item2Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bodyfat_item3Activity;
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
 
     private FloatingActionsMenu floatingActionsMenu;
-    //private View shadowView
+
+    private long backPressedTime;
+    private Toast backToast;
 
 
     @Override
@@ -56,12 +59,17 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        final FloatingActionsMenu FAB = (FloatingActionsMenu) findViewById(R.id.multiple_actions_down);
+
+
+
         // open new activity
         final com.getbase.floatingactionbutton.FloatingActionButton Suggest_bt = findViewById(R.id.fab1);
         Suggest_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Suggest_itemActivity.class);
+                FAB.collapse();
                 startActivity(intent);
             }
         });
@@ -71,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Bmi_item2Activity.class);
+                FAB.collapse();
                 startActivity(intent);
+
             }
         });
 
@@ -80,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Bodyfat_item3Activity.class);
+                FAB.collapse();
                 startActivity(intent);
             }
         });
@@ -89,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Weight_item4Activity.class);
+                FAB.collapse();
                 startActivity(intent);
             }
         });
@@ -98,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,Calorie_item5Activity.class);
+                FAB.collapse();
                 startActivity(intent);
             }
         });
@@ -122,5 +135,19 @@ public class MainActivity extends AppCompatActivity {
                 v1.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 1500 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            return;
+        } else {
+            backToast = Toast.makeText(getBaseContext(),"Press back again to exit",Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
     }
 }
