@@ -9,4 +9,7 @@
     <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">คำนวณเปอร์เซ็นต์ไขมันในร่างกาย</string>
     <string name="น้ำหนักที่เหมาสมกับส่วนสูง">น้ำหนักที่เหมาสมกับส่วนสูง</string>
     <string name="พลังงานที่ต้องการในแต่ละวัน">พลังงานที่ต้องการในแต่ละวัน</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

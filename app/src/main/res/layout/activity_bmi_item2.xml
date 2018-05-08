@@ -17,51 +17,22 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:textSize="18sp"
-            android:text="Body Mass Index (BMI)" />
-
         <EditText
             android:id="@+id/edt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:ems="10"
             android:hint="น้ำหนักตัว (กิโลกรัม)"
             android:inputType="numberDecimal" />
-
-        <TextView
-            android:id="@+id/tvError1"
-            android:text="กรุณากรอกข้อมูลให้ครบ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/edt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
             android:hint="ส่วนสูง (เซนติเมตร)"
             android:inputType="numberDecimal" />
-
-        <TextView
-            android:id="@+id/tvError2"
-            android:text="กรุณากรอกข้อมูลให้ครบ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -74,14 +45,15 @@
                 android:id="@+id/btnreset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginRight="15dp"
                 android:text="รีเซ็ตค่าใหม่" />
 
             <Button
                 android:id="@+id/btnresult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginLeft="15dp"
+                android:enabled="false"
                 android:text="คำนวณ" />
         </LinearLayout>
 
@@ -91,10 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="ผลลัพธ์" />
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center">
+
         <TextView
             android:id="@+id/tvresult"
             android:gravity="center"
@@ -102,6 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:textSize="25sp" />
-</ScrollView>
+
     </LinearLayout>
 </LinearLayout>
