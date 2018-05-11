@@ -44,5 +44,14 @@
         android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
     </LinearLayout>
-    <include layout="@layout/floatactionbt"/>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_view"
+        app:headerLayout="@layout/navigation_header">
+    </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>

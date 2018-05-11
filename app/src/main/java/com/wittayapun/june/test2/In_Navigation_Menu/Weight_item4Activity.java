@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.wittayapun.june.test2.In_Navigation_Menu.WeightForHeight.femaleWeightFragment;
@@ -21,6 +22,7 @@ public class Weight_item4Activity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setSubtitle("Body Weight Standard (BWS)");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         SegmentControl segmentControl = (SegmentControl) findViewById(R.id.segmentBWS);
         segmentControl.setOnSegmentControlClickListener(new SegmentControl.OnSegmentControlClickListener() {

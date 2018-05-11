@@ -1,8 +1,10 @@
 package com.wittayapun.june.test2;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -20,6 +22,7 @@ import com.wittayapun.june.test2.In_Navigation_Menu.Bmi_item2Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bodyfat_item3Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Calorie_item5Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Suggest_itemActivity;
+import com.wittayapun.june.test2.In_Navigation_Menu.UserActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Weight_item4Activity;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -30,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private ViewPager viewPager;
 
-    private FloatingActionsMenu floatingActionsMenu;
+    private DrawerLayout mDrawer;
+    private NavigationView nvDrawer;
+    private ActionBarDrawerToggle drawerToggle;
 
     private long backPressedTime;
     private Toast backToast;
@@ -40,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
         appBarLayout = (AppBarLayout)findViewById(R.id.appbarid);
@@ -59,82 +64,65 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        final FloatingActionsMenu FAB = (FloatingActionsMenu) findViewById(R.id.multiple_actions_down);
-
-
-
-        // open new activity
-        final com.getbase.floatingactionbutton.FloatingActionButton Suggest_bt = findViewById(R.id.fab1);
-        Suggest_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Suggest_itemActivity.class);
-                FAB.collapse();
-                startActivity(intent);
-            }
-        });
-
-        final com.getbase.floatingactionbutton.FloatingActionButton bmi_bt = findViewById(R.id.fab2);
-        bmi_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Bmi_item2Activity.class);
-                FAB.collapse();
-                startActivity(intent);
-
-            }
-        });
-
-        final com.getbase.floatingactionbutton.FloatingActionButton bodyfat_bt = findViewById(R.id.fab3);
-        bodyfat_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Bodyfat_item3Activity.class);
-                FAB.collapse();
-                startActivity(intent);
-            }
-        });
-
-        final com.getbase.floatingactionbutton.FloatingActionButton weight_bt = findViewById(R.id.fab4);
-        weight_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Weight_item4Activity.class);
-                FAB.collapse();
-                startActivity(intent);
-            }
-        });
-
-        final com.getbase.floatingactionbutton.FloatingActionButton cal_bt = findViewById(R.id.fab5);
-        cal_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Calorie_item5Activity.class);
-                FAB.collapse();
-                startActivity(intent);
-            }
-        });
-
-
-     // FloatingButton
-        setFloatingButtonControls();
+//Navigation drawer
+        initInstances();
     }
-//  SHADOW
-    private void setFloatingButtonControls() {
-        final View v1 = (View) findViewById(R.id.shadowView);
 
-        this.floatingActionsMenu = (FloatingActionsMenu) findViewById(R.id.multiple_actions_down);
-        this.floatingActionsMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
-            @Override
-            public void onMenuExpanded() {
-                v1.setVisibility(View.VISIBLE);
-            }
+    private void initInstances() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mDrawer = findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this,mDrawer,R.string.open, R.string.close);
+        mDrawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        nvDrawer = findViewById(R.id.nvView);
+        nvDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onMenuCollapsed() {
-                v1.setVisibility(View.GONE);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+                    case R.id.user_activity:
+                        Intent user = new Intent(MainActivity.this, UserActivity.class);
+                        startActivity(user);
+                        break;
+                    case R.id.suggest:
+                        Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
+                        startActivity(suggest);
+                        break;
+                    case R.id.bmi:
+                        Intent bmi = new Intent(MainActivity.this,Bmi_item2Activity.class);
+                        startActivity(bmi);
+                        break;
+                    case R.id.fatpercentage:
+                        Intent fat = new Intent(MainActivity.this,Bodyfat_item3Activity.class);
+                        startActivity(fat);
+                        break;
+                    case R.id.weight:
+                        Intent weight = new Intent(MainActivity.this,Weight_item4Activity.class);
+                        startActivity(weight);
+                        break;
+                    case R.id.calorie:
+                        Intent calorie = new Intent(MainActivity.this,Calorie_item5Activity.class);
+                        startActivity(calorie);
+                        break;
+                }
+                return false;
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // The action bar home/up action should open or close the drawer.
+        /*switch (item.getItemId()){
+            case android.R.id.home:
+                mDrawer.openDrawer(GravityCompat.START);*/
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -150,4 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
         backPressedTime = System.currentTimeMillis();
     }
+
+
 }

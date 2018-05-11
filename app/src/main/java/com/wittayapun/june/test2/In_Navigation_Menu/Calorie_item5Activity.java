@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.wittayapun.june.test2.In_Navigation_Menu.Calorie.femaleCalorieFragment;
@@ -21,6 +22,7 @@ public class Calorie_item5Activity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setSubtitle("Basal Metabolic Rate (BMR)");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         SegmentControl segmentControl = (SegmentControl) findViewById(R.id.segmentCal);
         segmentControl.setOnSegmentControlClickListener(new SegmentControl.OnSegmentControlClickListener() {

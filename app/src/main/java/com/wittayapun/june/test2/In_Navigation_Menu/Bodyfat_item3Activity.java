@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.sevenheaven.segmentcontrol.SegmentControl;
@@ -23,6 +24,7 @@ public class Bodyfat_item3Activity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setSubtitle("Lean Body Mass (LBM)");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //.setBackgroundColor(Color.zzz);
 
         SegmentControl segment = (SegmentControl)findViewById(R.id.segment);

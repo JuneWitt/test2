@@ -17,16 +17,22 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChestDetailActivity" />
-        <activity android:name=".In_Navigation_Menu.Suggest_itemActivity"
-            android:label="@string/ท่าออกกำลังกายที่เหมาะสม"/>
-        <activity android:name=".In_Navigation_Menu.Bmi_item2Activity"
-            android:label="@string/คำนวณดัชนีมวลกาย"/>
-        <activity android:name=".In_Navigation_Menu.Bodyfat_item3Activity"
-            android:label="@string/คำนวณเปอร์เซ็นต์ไขมันในร่างกาย"/>
-        <activity android:name=".In_Navigation_Menu.Weight_item4Activity"
-            android:label="@string/น้ำหนักที่เหมาสมกับส่วนสูง"/>
-        <activity android:name=".In_Navigation_Menu.Calorie_item5Activity"
-            android:label="@string/พลังงานที่ต้องการในแต่ละวัน"></activity>
+        <activity
+            android:name=".In_Navigation_Menu.Suggest_itemActivity"
+            android:label="@string/ท่าออกกำลังกายที่เหมาะสม" />
+        <activity
+            android:name=".In_Navigation_Menu.Bmi_item2Activity"
+            android:label="@string/คำนวณดัชนีมวลกาย" />
+        <activity
+            android:name=".In_Navigation_Menu.Bodyfat_item3Activity"
+            android:label="@string/คำนวณเปอร์เซ็นต์ไขมันในร่างกาย" />
+        <activity
+            android:name=".In_Navigation_Menu.Weight_item4Activity"
+            android:label="@string/น้ำหนักที่เหมาสมกับส่วนสูง" />
+        <activity
+            android:name=".In_Navigation_Menu.Calorie_item5Activity"
+            android:label="@string/พลังงานที่ต้องการในแต่ละวัน" />
+        <activity android:name=".In_Navigation_Menu.UserActivity"></activity>
     </application>
 
 </manifest>

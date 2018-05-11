@@ -3,7 +3,8 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="คำนวณ"></string>
+    <string name="ข้อมูลผู้ใช้">ข้อมูลผู้ใช้</string>
+    <string name="คำนวณ">คำนวณ</string>
     <string name="ท่าออกกำลังกายที่เหมาะสม">ท่าออกกำลังกายที่เหมาะสม</string>
     <string name="คำนวณดัชนีมวลกาย">คำนวณดัชนีมวลกาย</string>
     <string name="คำนวณเปอร์เซ็นต์ไขมันในร่างกาย">คำนวณเปอร์เซ็นต์ไขมันในร่างกาย</string>
