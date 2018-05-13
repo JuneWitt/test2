@@ -33,6 +33,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DB_PATH = Environment.getDataDirectory() + "/data/" + context.getPackageName() + "/databases/";
         }
         this.myContext = context;
+        /*
+        NEW
+
+
+         */
     }
 
     @Override
@@ -44,6 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
     public void checkAndCopyDatabase() {
         boolean dbExist = checkDatabase();
         if (dbExist) {

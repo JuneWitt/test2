@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(user);
                         break;
                     case R.id.suggest:
+                        // user check
                         Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
                         startActivity(suggest);
                         break;
@@ -138,6 +139,4 @@ public class MainActivity extends AppCompatActivity {
 
         backPressedTime = System.currentTimeMillis();
     }
-
-
 }
