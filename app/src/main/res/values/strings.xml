@@ -11,6 +11,18 @@
     <string name="น้ำหนักที่เหมาสมกับส่วนสูง">น้ำหนักที่เหมาสมกับส่วนสูง</string>
     <string name="พลังงานที่ต้องการในแต่ละวัน">พลังงานที่ต้องการในแต่ละวัน</string>
 
+    <array name="gender">
+        <item>ชาย</item>
+        <item>หญิง</item>
+    </array>
+
+    <!-- TODO: Dialog -->
+    <string name="สำเร็จ">สำเร็จ</string>
+    <string name="คุณได้สร้างโปรไฟล์แล้ว">คุณได้สร้างโปรไฟล์แล้ว</string>
+    <string name="คุณได้อัพเดทโปรไฟล์แล้ว">คุณได้อัพเดทโปรไฟล์แล้ว</string>
+    <string name="OK">OK</string>
+    <string name="spaceofname">   </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

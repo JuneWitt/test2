@@ -1,5 +1,6 @@
 package com.wittayapun.june.test2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
@@ -33,21 +35,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DB_PATH = Environment.getDataDirectory() + "/data/" + context.getPackageName() + "/databases/";
         }
         this.myContext = context;
-        /*
-        NEW
-
-
-         */
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public void checkAndCopyDatabase() {
@@ -64,20 +59,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean checkDatabase(){
+    public boolean checkDatabase() {
         SQLiteDatabase checkDB = null;
         try {
             String myPath = DB_PATH + DB_NAME;
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-        }catch (SQLiteException e) {
+        } catch (SQLiteException e) {
         }
-            if (checkDB !=null){
+        if (checkDB != null) {
             checkDB.close();
         }
         return checkDB != null ? true : false;
     }
 
-    public void copyDatabase()throws IOException {
+    public void copyDatabase() throws IOException {
         InputStream myInput = myContext.getAssets().open(DB_NAME);
         String outFileName = DB_PATH + DB_NAME;
         OutputStream myOutput = new FileOutputStream(outFileName);
@@ -91,23 +86,72 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         myInput.close();
     }
 
-    public void openDatabase(){
+    public void openDatabase() {
         String myPath = DB_PATH + DB_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
 
     }
 
-    public synchronized void close(){
-        if (myDatabase != null){
+    public synchronized void close() {
+        if (myDatabase != null) {
             myDatabase.close();
         }
         super.close();
     }
 
-    public Cursor QueryData(String query){
+    public Cursor QueryData(String query) {
         return myDatabase.rawQuery(query, null);
     }
 
 
+//New new newnew
+    /*
+    public Cursor getRowData(String query) {
+        return myDatabase.rawQuery(query,null);
+    }
+
+
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+        return res;
+    }
+*/
+
+
+/*
+
+    public Integer deleteData (String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, "ID = ?",new String[] {id});
+    }
+
+
+    public long writeDBTable(ContentValues cv,String table)
+    {
+        SQLiteDatabase sdb= databaseHelper.getWritableDatabase();
+        long res=sdb.insert(table, null, cv);
+        sdb.close();
+        return res;
+    }
+    */
 }
 
+/*
+
+
+public void DeleteData() {
+        btnDelete.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
+                        if(deletedRows > 0)
+                            Toast.makeText(MainActivity.this,"Data Deleted",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(MainActivity.this,"Data not Deleted",Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+    }
+ */

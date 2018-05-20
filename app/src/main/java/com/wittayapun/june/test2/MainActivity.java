@@ -1,6 +1,7 @@
 package com.wittayapun.june.test2;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,18 +17,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wittayapun.june.test2.In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bmi_item2Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bodyfat_item3Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Calorie_item5Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Suggest_itemActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.UserActivity;
+import com.wittayapun.june.test2.In_Navigation_Menu.UserDatabaseHelper;
 import com.wittayapun.june.test2.In_Navigation_Menu.Weight_item4Activity;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 public class MainActivity extends AppCompatActivity {
+
+    UserDatabaseHelper mydb;
+    //NAV
+    TextView n1,n2,n3,n4,n5;
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
@@ -65,7 +73,31 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 //Navigation drawer
+        queryInstance();
         initInstances();
+    }
+
+    private void queryInstance() {
+
+        mydb = new UserDatabaseHelper(this);
+
+        // NAV
+        n1 = findViewById(R.id.FirstLastnameShow);
+        n2 = findViewById(R.id.genderShow);
+        n3 = findViewById(R.id.ageShow);
+        n4 = findViewById(R.id.WShow);
+        n5 = findViewById(R.id.HShow);
+        //  NAV
+        Cursor res = mydb.getReadData();
+
+        if (res != null) {
+            n1.setText(res.getString(1)+ getString(R.string.spaceofname) + res.getString(2));
+            n2.setText(res.getString(3));
+            n3.setText(res.getString(4));
+            n4.setText(res.getString(5));
+            n5.setText(res.getString(6));
+            return;
+        }
     }
 
     private void initInstances() {
@@ -83,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id) {
+                    case R.id.imvbtnEdit:
+                        Intent edit = new Intent(MainActivity.this, EditDetailActivity.class);
+                        startActivity(edit);
+                        break;
                     case R.id.user_activity:
                         Intent user = new Intent(MainActivity.this, UserActivity.class);
                         startActivity(user);
