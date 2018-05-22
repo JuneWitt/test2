@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,23 +32,24 @@ import com.wittayapun.june.test2.In_Navigation_Menu.Weight_item4Activity;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
     UserDatabaseHelper mydb;
     //NAV
-    TextView n1,n2,n3,n4,n5;
+    TextView n1,n2,n3,n4,n5,n11;
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
     private ViewPager viewPager;
 
     private DrawerLayout mDrawer;
-    private NavigationView nvDrawer;
+    public NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
 
     private long backPressedTime;
     private Toast backToast;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,32 +75,48 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 //Navigation drawer
-        queryInstance();
-        initInstances();
-    }
-
-    private void queryInstance() {
-
+        nvDrawer = findViewById(R.id.nvView);
+        View header = nvDrawer.getHeaderView(0);
         mydb = new UserDatabaseHelper(this);
 
         // NAV
-        n1 = findViewById(R.id.FirstLastnameShow);
-        n2 = findViewById(R.id.genderShow);
-        n3 = findViewById(R.id.ageShow);
-        n4 = findViewById(R.id.WShow);
-        n5 = findViewById(R.id.HShow);
+        n1 = header.findViewById(R.id.FirstShow);
+        n11 = header.findViewById(R.id.LastShow);
+        n2 = header.findViewById(R.id.genderShow);
+        n3 = header.findViewById(R.id.ageShow);
+        n4 = header.findViewById(R.id.WShow);
+        n5 = header.findViewById(R.id.HShow);
         //  NAV
         Cursor res = mydb.getReadData();
 
-        if (res != null) {
-            n1.setText(res.getString(1)+ getString(R.string.spaceofname) + res.getString(2));
+        if (res != null && res.moveToFirst()) {
+            n1.setText(res.getString(1));
+            n11.setText(res.getString(2));
             n2.setText(res.getString(3));
             n3.setText(res.getString(4));
             n4.setText(res.getString(5));
             n5.setText(res.getString(6));
-            return;
+            res.close();
         }
+
+        //queryInstance();
+        initInstances();
+        //
+        ImageButton ib = (ImageButton)header.findViewById(R.id.imvbtnEdit);
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent edit = new Intent(getApplicationContext(),EditDetailActivity.class);
+                startActivity(edit);
+            }
+        });
     }
+
+/*
+    private void queryInstance() {
+        //View header = nvDrawer.getHeaderView(0);
+
+    }*/
 
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -109,16 +127,12 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        nvDrawer = findViewById(R.id.nvView);
+        //nvDrawer = (NavigationView) findViewById(R.id.nvView);
         nvDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id) {
-                    case R.id.imvbtnEdit:
-                        Intent edit = new Intent(MainActivity.this, EditDetailActivity.class);
-                        startActivity(edit);
-                        break;
                     case R.id.user_activity:
                         Intent user = new Intent(MainActivity.this, UserActivity.class);
                         startActivity(user);
