@@ -86,18 +86,22 @@ public class MainActivity extends AppCompatActivity {
         n3 = header.findViewById(R.id.ageShow);
         n4 = header.findViewById(R.id.WShow);
         n5 = header.findViewById(R.id.HShow);
-        //  NAV
-        Cursor res = mydb.getReadData();
 
-        if (res != null && res.moveToFirst()) {
-            n1.setText(res.getString(1));
-            n11.setText(res.getString(2));
-            n2.setText(res.getString(3));
-            n3.setText(res.getString(4));
-            n4.setText(res.getString(5));
-            n5.setText(res.getString(6));
-            res.close();
+        //  NAV
+        if (mDrawer.isDrawerOpen(GravityCompat.START)){
+            Cursor res = mydb.getReadData();
+
+            if (res != null && res.moveToFirst()) {
+                n1.setText(res.getString(1));
+                n11.setText(res.getString(2));
+                n2.setText(res.getString(3));
+                n3.setText(res.getString(4));
+                n4.setText(res.getString(5));
+                n5.setText(res.getString(6));
+                res.close();
+            }
         }
+
 
         //queryInstance();
         initInstances();
@@ -140,7 +144,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.suggest:
                         // user check
                         Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
+                        mDrawer.closeDrawer(GravityCompat.START);
                         startActivity(suggest);
+
                         break;
                     case R.id.bmi:
                         Intent bmi = new Intent(MainActivity.this,Bmi_item2Activity.class);

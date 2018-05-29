@@ -11,6 +11,8 @@
     <string name="น้ำหนักที่เหมาสมกับส่วนสูง">น้ำหนักที่เหมาสมกับส่วนสูง</string>
     <string name="พลังงานที่ต้องการในแต่ละวัน">พลังงานที่ต้องการในแต่ละวัน</string>
 
+    <string name="รูปร่าง">รูปร่าง</string>
+
     <array name="gender">
         <item>ชาย</item>
         <item>หญิง</item>
@@ -25,4 +27,17 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: ForSuggets_itemActivity -->
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+    <string name=""></string>
+
 </resources>

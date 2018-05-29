@@ -36,7 +36,8 @@
             android:name=".In_Navigation_Menu.Calorie_item5Activity"
             android:label="@string/พลังงานที่ต้องการในแต่ละวัน" />
         <activity android:name=".In_Navigation_Menu.UserActivity" />
-        <activity android:name=".In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity"></activity>
+        <activity android:name=".In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity" />
+        <activity android:name=".In_Navigation_Menu.ShowExerFromSuggestActivity"></activity>
     </application>
 
 </manifest>

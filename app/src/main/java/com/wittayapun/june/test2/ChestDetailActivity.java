@@ -53,7 +53,7 @@ public class ChestDetailActivity extends Activity {
                 Toast.makeText(this, "Now your ID is: " + ID, Toast.LENGTH_SHORT).show();
 
                 tvExerName.setText(cursor.getString(1));
-                //Gifpath.setImageBitmap(getImage(curcor.getBlob(3)));
+                //Gifpath.setImageBitmap(getImage(curcor.getBlob(2)));
                 tvShowM_MainGroup.setText(cursor.getString(3));
                 tvShowM_SecondGroup.setText(cursor.getString(4));
                 tvShowEquipment.setText(cursor.getString(5));
