@@ -29,7 +29,9 @@
         <ExpandableListView
             android:id="@+id/ExpandLV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:listSelector="#ffc"
+            android:indicatorLeft="?android:attr/expandableListPreferredChildIndicatorLeft">
         </ExpandableListView>
         
         

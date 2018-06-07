@@ -25,6 +25,7 @@ import com.wittayapun.june.test2.In_Navigation_Menu.ActivityWhenHaveUser.EditDet
 import com.wittayapun.june.test2.In_Navigation_Menu.Bmi_item2Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bodyfat_item3Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Calorie_item5Activity;
+import com.wittayapun.june.test2.In_Navigation_Menu.ShowExerFromSuggestActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Suggest_itemActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.UserActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.UserDatabaseHelper;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     UserDatabaseHelper mydb;
     //NAV
     TextView n1,n2,n3,n4,n5,n11;
+    int forAge;
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
@@ -87,25 +89,8 @@ public class MainActivity extends AppCompatActivity {
         n4 = header.findViewById(R.id.WShow);
         n5 = header.findViewById(R.id.HShow);
 
-        //  NAV
-        if (mDrawer.isDrawerOpen(GravityCompat.START)){
-            Cursor res = mydb.getReadData();
-
-            if (res != null && res.moveToFirst()) {
-                n1.setText(res.getString(1));
-                n11.setText(res.getString(2));
-                n2.setText(res.getString(3));
-                n3.setText(res.getString(4));
-                n4.setText(res.getString(5));
-                n5.setText(res.getString(6));
-                res.close();
-            }
-        }
-
-
-        //queryInstance();
         initInstances();
-        //
+
         ImageButton ib = (ImageButton)header.findViewById(R.id.imvbtnEdit);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,20 +101,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-/*
-    private void queryInstance() {
-        //View header = nvDrawer.getHeaderView(0);
-
-    }*/
-
     private void initInstances() {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mDrawer = findViewById(R.id.drawer_layout);
-        drawerToggle = new ActionBarDrawerToggle(this,mDrawer,R.string.open, R.string.close);
+        drawerToggle = new ActionBarDrawerToggle(this,mDrawer,R.string.open, R.string.close)
+        {
+            public void onDrawerOpened(View drawerView)
+            {
+                Cursor res = mydb.getReadData();
+
+                if (res != null && res.moveToFirst()) {
+                    n1.setText(res.getString(1));
+                    n11.setText(res.getString(2));
+                    n2.setText(res.getString(3));
+                    n3.setText(res.getString(4));
+                    forAge = Integer.parseInt(res.getString(4));
+                    n4.setText(res.getString(5));
+                    n5.setText(res.getString(6));
+                    res.close();
+                }
+            }
+        };
         mDrawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
 
         //nvDrawer = (NavigationView) findViewById(R.id.nvView);
         nvDrawer.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -138,15 +135,18 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id) {
                     case R.id.user_activity:
+                        // user check
                         Intent user = new Intent(MainActivity.this, UserActivity.class);
                         startActivity(user);
+
                         break;
+
                     case R.id.suggest:
-                        // user check
                         Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
+                        suggest.putExtra("Data from age",forAge);
+                        Toast.makeText(MainActivity.this,"intent = "+forAge,Toast.LENGTH_SHORT).show();
                         mDrawer.closeDrawer(GravityCompat.START);
                         startActivity(suggest);
-
                         break;
                     case R.id.bmi:
                         Intent bmi = new Intent(MainActivity.this,Bmi_item2Activity.class);
@@ -169,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

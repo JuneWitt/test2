@@ -89,7 +89,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void openDatabase() {
         String myPath = DB_PATH + DB_NAME;
         myDatabase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-
     }
 
     public synchronized void close() {

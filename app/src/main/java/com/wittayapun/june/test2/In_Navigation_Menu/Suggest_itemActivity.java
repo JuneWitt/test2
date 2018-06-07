@@ -6,136 +6,220 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wittayapun.june.test2.MainActivity;
+import com.wittayapun.june.test2.ChestDetailActivity;
+import com.wittayapun.june.test2.DatabaseHelper;
+import com.wittayapun.june.test2.ExpandableListAdapter.ChildItem;
+import com.wittayapun.june.test2.ExpandableListAdapter.ExpandableListAdapter;
+import com.wittayapun.june.test2.ExpandableListAdapter.GroupItem;
 import com.wittayapun.june.test2.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Suggest_itemActivity extends AppCompatActivity {
 
-    UserDatabaseHelper dbHelper;
-    TextView tvDes, tvdetail;
-    ImageView imvfat;
-    Button suggestExer;
+    DatabaseHelper dbHelper;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggest_item);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setSubtitle("Exercise Recommend");
-        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setSubtitle("Exercise Recommend");
 
-        dbHelper = new UserDatabaseHelper(this);
+        //  Get intent
+        Intent intentForAge = getIntent();
+        int Age = intentForAge.getIntExtra("Data from age",0);
+
+        TextView showSuggest = findViewById(R.id.tvDes);
+
+        if (Age <=0) { showSuggest.setText("Error Data(age) ,No exercise recommend for you");prepareListData();// preparing list data in expandable listView
+        } else if (Age < 15 ){showSuggest.setText(" ในช่วงอยุของท่าน การเจริญเติบโต และพัฒนาการด้านร่างกายยังไม่แข็งแรงมาก แต่สามารถเล่นได้ทุกท่า ด้วยน้ำหนักเบาถึงเบามาก");prepareListData();
+        } else if (Age > 15 && Age <=39) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อแน่น และมวลกระดูก อยู่ในระดับดีมาก สามารถเล่นได้ทุกท่า โดยใช้น้ำหนักมากได้");prepareListData();
+        } else if (Age > 39 && Age <=55) {showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับปานกลาง สามารถเล่นได้ทุกท่า และควรใช้น้ำหนักปานกลาง");prepareListData();
+        } else if (Age > 55 && Age <=64) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับค่อนข้างน้อย สามารถเล่นได้ทุกท่า แต่ควรใช้น้ำหนักน้อยถึงปานกลาง");prepareListData();
+        } else if (Age >65) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก"); prepareListDatafor65Plus();}
+
     }
 
-    private void showDetailInstance() {
-        Cursor res = dbHelper.getReadData();
-        //Cursor res = dbhelper.rawQuery("select * from User ",null);
-        if (res.getCount() == 0) {
-            // show message
-           Toast.makeText(this,"Error, Nothing found data",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        StringBuffer buffer = new StringBuffer();
-        while (res.moveToNext()) {
-            //buffer.append("Id :" + res.getString(0) + "\n");
-            buffer.append("FirstName: " + res.getString(1) + "\n");
-            buffer.append("Surname: " + res.getString(2) + "\n");
-            buffer.append("Gender:" + res.getString(3) + "\n");
-            buffer.append("Age: " + res.getString(4) + "\n");
-            buffer.append("Weight: " + res.getString(5) + "\n");
-            buffer.append("Height: " + res.getString(6));
-        }
+    private void prepareListData() {
 
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add(res.getString(2));
-        comingSoon.add("The Smurfs 2");
+        // get the listview
+        ExpandableListView expListView = findViewById(R.id.ExpandLV);
 
-        tvDes = findViewById(R.id.tvDescribtion);
-        tvDes = new TextView(this);
-        tvDes.setText(buffer.toString());
-        setContentView(tvdetail);
+        final ArrayList<GroupItem> groupArray = new ArrayList<>();
+        GroupItem groupItem;
+        String groupName;
+        ArrayList<ChildItem> childArrayList;
 
-        tvdetail = findViewById(R.id.tvDetail);
-        imvfat = findViewById(R.id.imvShape);
+        groupName = "CHEST";
+        childArrayList = new ArrayList<>();
 
-        //  for intent
-        final int forAge = Integer.parseInt(res.getString(4));
+        dbHelper = new DatabaseHelper(this);
+        dbHelper.openDatabase();
 
-        if (tvDes != null) {
-            double w =  Integer.parseInt(res.getString(5));
-            double h = Integer.parseInt(res.getString(6));
-            String sex = res.getString(3);
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Chest'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
 
-            h = h / 100;  //  cm => m
-            double ans = w / (h * h);
+                    //childArrayList.addAll(Arrays.asList(item));
+                    //childArrayList.addAll(Collections.<ChildItem>emptyList());
+                    childArrayList.add(item);
 
-            String shape,thin1,thin2,thin3,good,fat1,fat2,fat3;
-             shape = "รูปร่างของคุณ: ";
-             thin1 = "ผอม";
-             thin2 = "ค่อนข้างผอม";
-             thin3 = "ผอมมาก";
-             good = "สมส่วน ";
-             fat1 = "ค่อนข้างผอม";
-             fat2 = "ค่อนข้างผอม";
-             fat3 = "อ้วนมาก";
-
-            if (ans < 16.00) {
-                tvdetail.setText(shape + thin3);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape1);}else{ imvfat.setImageResource(R.drawable.Fshape1);}
-
-            } else if (ans < 17.00) {
-                tvdetail.setText(shape + thin2);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape1);}else{ imvfat.setImageResource(R.drawable.Fshape1);}
-
-            } else if (ans < 18.50) {
-                tvdetail.setText(shape + thin1);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape1);}else{ imvfat.setImageResource(R.drawable.Fshape1);}
-
-            } else if (ans < 23.00) {
-                tvdetail.setText(shape + good);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape2);}else{ imvfat.setImageResource(R.drawable.Fshape2);}
-
-            } else if (ans < 25.00) {
-                tvdetail.setText(shape + thin2);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape3);}else{ imvfat.setImageResource(R.drawable.Fshape3);}
-
-            } else if (ans < 30.00) {
-                tvdetail.setText(shape + fat1);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape3);}else{ imvfat.setImageResource(R.drawable.Fshape3);}
-
-            } else if (ans < 40.00) {
-                tvdetail.setText(shape + fat2);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape3);}else{ imvfat.setImageResource(R.drawable.Fshape3);}
-
-            } else if (ans > 39.99) {
-                tvdetail.setText(shape + fat3);
-                if (sex == "ชาย"){ imvfat.setImageResource(R.drawable.Mshape3);}else{ imvfat.setImageResource(R.drawable.Fshape3);}
+                } while (cursor.moveToNext());
             }
         }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
 
-        suggestExer = findViewById(R.id.btnExerSuggest);
+        groupName = "BACK";
+        childArrayList = new ArrayList<>();
 
-        showDetailInstance();
-        suggestExer.setOnClickListener(new View.OnClickListener() {
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Back'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "SHOULDERS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Shoulder'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "ABS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Abs'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "ARMS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Arms'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "LEGS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Leg'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "CALF";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Calf'");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+//  Adapter
+        ExpandableListAdapter adapter = new ExpandableListAdapter(this, groupArray);
+        expListView.setAdapter(adapter);
+
+     // On ChildClick
+        final ArrayList<ChildItem> ChildArrayList = childArrayList;    // ChildArrayList is add final
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Suggest_itemActivity.this,ShowExerFromSuggestActivity.class);
-                intent.putExtra("Data from age",forAge+"");
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int gPos, int cPos, long l) {
+                //String item = groupArray.get(gPos).childItems.get(cPos).text;
+                Intent intent = new Intent(Suggest_itemActivity.this, ChestDetailActivity.class);
+                intent.putExtra("ID",groupArray.get(gPos).childItems.get(cPos).get_id()+"");
                 startActivity(intent);
+                return true;
             }
         });
     }
 
+    private void prepareListDatafor65Plus() {
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

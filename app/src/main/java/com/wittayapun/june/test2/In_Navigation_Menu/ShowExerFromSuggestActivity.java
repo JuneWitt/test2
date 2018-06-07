@@ -13,6 +13,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
+import com.wittayapun.june.test2.ChestDetailActivity;
 import com.wittayapun.june.test2.DatabaseHelper;
 import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
@@ -34,13 +35,13 @@ public class ShowExerFromSuggestActivity extends Activity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;    // Store header data.
-    HashMap<String, List<Item>> listDataChild;    // Store child data. Key is the group value, Value is the child data in a list.
+    HashMap<String, List<String>> listDataChild;    // Store child data. Key is the group value, Value is the child data in a list.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_exer_from_suggest);
-
+/*
         //  Get intent
         Intent intentForAge = getIntent();
         int Age = intentForAge.getIntExtra("Data from age",0);
@@ -59,16 +60,39 @@ public class ShowExerFromSuggestActivity extends Activity {
         } else if (Age >65) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก"); prepareListDatafor65Plus();}
 
         /* Create an ExpandableListAdapter object, this object
-        will be used to provide data to ExpandableListView. */
+        will be used to provide data to ExpandableListView.
         listAdapter = new com.wittayapun.june.test2.ExpandableListAdapter.ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         // setting list adapter
         expListView.setAdapter(listAdapter);
+
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+
+            }
+        });
+
+        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+
+            }
+        });
+
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
+                Intent intent = new Intent(ShowExerFromSuggestActivity.this, ChestDetailActivity.class);
+                intent.putExtra("ID",childPosition);
+                return true;
+            }
+        });
     }
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<Item>>();
+        listDataChild = new HashMap<String, List<String>>();
 
         // Adding Header
         listDataHeader.add("CHEST");
@@ -89,7 +113,7 @@ public class ShowExerFromSuggestActivity extends Activity {
 
         // Adding child of data
         cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Chest'");
-        List<Item> childChest = new ArrayList<Item>();
+        List<String> childChest = new ArrayList<String>();
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -98,12 +122,7 @@ public class ShowExerFromSuggestActivity extends Activity {
                     item.setExer_name(cursor.getString(1));
 
                     childChest.add(item);
-                        //childChest.add(cursor.getString(1));
-                        /*
-                    Item item = new Item();
-                    item.setExer_name(cursor.getString(1));
-                    item.setId(cursor.getInt(0));
-                    */
+
                 } while (cursor.moveToNext());
             }
         }
@@ -319,4 +338,8 @@ public class ShowExerFromSuggestActivity extends Activity {
         listDataChild.put(listDataHeader.get(5), childLeg);
         listDataChild.put(listDataHeader.get(6), childCalf);
     }
+
+    */
+    }
 }
+
