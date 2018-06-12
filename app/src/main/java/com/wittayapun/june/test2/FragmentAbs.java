@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.wittayapun.june.test2.item.Adapter.AbsAdapter;
 import com.wittayapun.june.test2.item.Item;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class FragmentAbs  extends Fragment implements OnTapListener{
@@ -55,6 +56,8 @@ public class FragmentAbs  extends Fragment implements OnTapListener{
                 if (cursor.moveToFirst()) {
                     do {
                         Item item = new Item();
+
+                        //item.setIcon(cursor.getString(2));
                         item.setExer_name(cursor.getString(1));
                         item.setId(cursor.getInt(0));
 

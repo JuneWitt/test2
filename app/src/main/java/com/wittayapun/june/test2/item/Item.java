@@ -1,9 +1,10 @@
 package com.wittayapun.june.test2.item;
 
+import android.widget.ImageView;
+
 public class Item{
     private int id;
     private String Exer_name;
-    //private int Icon;
 
     //  getter
     public long getId() {
@@ -18,17 +19,8 @@ public class Item{
         return Exer_name;
     }
 
-        //  setter
+    //  setter
     public void setExer_name(String exer_name) {
         Exer_name = exer_name;
     }
-
-    /*
-    public int getIcon() {
-        return Icon;
-    }   // New
-
-    public void setIcon(int Icon) {
-        Icon = Icon;
-    }   //  New */
 }

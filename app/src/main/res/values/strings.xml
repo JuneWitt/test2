@@ -30,5 +30,13 @@
 
     <!-- TODO: ForSuggets_itemActivity -->
 
+    <!-- TODO: DetailActivity -->
+    <string name="M_MainGroup">กล้ามเนื้อหลักที่ทำงาน</string>
+    <string name="M_SecondGroup">กล้ามเนื้อรองที่ทำงาน</string>
+    <string name="Equipment">อุปกรณ์ที่เหมาะสม</string>
+    <string name="Posture">การจัดท่า</string>
+    <string name="M_Contraction">การโฟกัสกล้ามเนื้อ</string>
+    <string name="RepSet">จำนวณครั้ง/รอบ</string>
+    <string name="RestTime">เวลาพัก/รอบ</string>
 
 </resources>

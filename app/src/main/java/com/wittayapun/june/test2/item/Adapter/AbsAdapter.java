@@ -1,6 +1,7 @@
 package com.wittayapun.june.test2.item.Adapter;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import com.wittayapun.june.test2.R;
 import com.wittayapun.june.test2.item.Item;
 import com.wittayapun.june.test2.item.SetViewHolder;
 
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,6 +40,8 @@ public class AbsAdapter extends RecyclerView.Adapter<SetViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SetViewHolder holder, final int position) {
         holder.txt_Exer_Name.setText(items.get(position).getExer_name());
+
+        //holder.Exer_Thumbnail.setImageDrawable(items.get(position).getIcon());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,13 +4,15 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:clickable="true">
+    android:layout_margin="7dp"
+    android:elevation="9dp"
+    android:background="@drawable/shadow">
 
     <ImageView android:id="@+id/imvExer"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@mipmap/ic_launcher_round"
+        android:background="@color/defaultcolor"
         android:padding="10dp" />
 
     <LinearLayout
@@ -27,6 +29,6 @@
             android:textStyle="bold"
             tools:textSize="25sp"
             android:paddingLeft="20dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/defaultcolor"/>
     </LinearLayout>
 </LinearLayout>

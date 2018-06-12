@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity">
+
+    <EditText
+        android:id="@+id/ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:visibility="invisible"
+        android:clickable="false" />
+    <EditText
+        android:id="@+id/edfirstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="ชื่อ" />
+
+    <EditText
+        android:id="@+id/edlastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="นามสกุล" />
+
+    <LinearLayout
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เพศ :"
+            android:textSize="17dp"/>
+
+        <Spinner
+            android:id="@+id/spinGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/gender" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/ageEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLength="2"
+        android:hint="อายุ" />
+
+    <EditText
+        android:id="@+id/wEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="6"
+        android:hint="น้ำหนัก (กิโลกรัม)" />
+
+    <EditText
+        android:id="@+id/hEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
+        android:hint="ส่วนสูง (เซนติเมตร)" />
+
+    <Button
+        android:id="@+id/updatedata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ยืนยันการแก้ไขข้อมูล" />
+
+</LinearLayout>

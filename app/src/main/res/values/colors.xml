@@ -2,9 +2,10 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="tabtextcolor">#fff</color>
-    <color name="tabbindicatorcolor">#2d2d2d</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorAccent">#039BE5</color>
+
+    <color name="tabtextcolor">#808080</color>
+    <color name="tabbindicatorcolor">#039BE5</color>
 
     <color name="defaultcolor">#EEEEEE</color>
     <color name="defaultcolor2">#FAFAFA</color>
@@ -17,6 +18,15 @@
     <color name="pink_pressed">#ec407a</color>
     <color name="blue_semi_transparent">#805677fc</color>
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
+
+    //style
+    <color name="cream">#CDC5C5</color>
+    <color name="แดงแจ๊">#CD0808</color>
+    <color name="แดง">#B40808</color>
+    <color name="purple2">#393141</color>
+    <color name="กรม">#416A83</color>
+    <color name="กรมอ่อน">#8B9CAC</color>
+    <color name="green1">#00e676</color>
 
     //Dialog
     <color name="color_dialog_gray">#ededf3</color>

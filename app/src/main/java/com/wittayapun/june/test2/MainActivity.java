@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,15 +22,18 @@ import com.wittayapun.june.test2.In_Navigation_Menu.ActivityWhenHaveUser.EditDet
 import com.wittayapun.june.test2.In_Navigation_Menu.Bmi_item2Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Bodyfat_item3Activity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Calorie_item5Activity;
-import com.wittayapun.june.test2.In_Navigation_Menu.ShowExerFromSuggestActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.Suggest_itemActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.UserActivity;
 import com.wittayapun.june.test2.In_Navigation_Menu.UserDatabaseHelper;
 import com.wittayapun.june.test2.In_Navigation_Menu.Weight_item4Activity;
+import com.wittayapun.june.test2.item.imageViewpager.ImageAbsFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageArmsFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageBackFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageCalfFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageChestFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageLegFragment;
+import com.wittayapun.june.test2.item.imageViewpager.ImageShoulderFragment;
 
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
-
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private AppBarLayout appBarLayout;
-    private ViewPager viewPager;
+    private ViewPager viewPager,imvviewPager;
 
     private DrawerLayout mDrawer;
     public NavigationView nvDrawer;
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager)findViewById(R.id.viewpager_id);
         viewPager.setOffscreenPageLimit(7);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter2 = new ViewPagerAdapter(getSupportFragmentManager());
         //  Adding Fragment
         adapter.AddFragment(new FragmentChest(),"CHEST");
         adapter.AddFragment(new FragmentBack(),"BACK");
@@ -72,9 +73,69 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new FragmentArms(),"ARMS");
         adapter.AddFragment(new FragmentLeg(),"LEGS");
         adapter.AddFragment(new FragmentCalf(),"CALF");
+
+        imvviewPager = findViewById(R.id.imvViewpager);
+
+        adapter2.AddFragment(new ImageChestFragment(),"CHEST");
+        adapter2.AddFragment(new ImageBackFragment(),"Back");
+        adapter2.AddFragment(new ImageShoulderFragment(),"SHOULDERS");
+        adapter2.AddFragment(new ImageAbsFragment(),"ABS");
+        adapter2.AddFragment(new ImageArmsFragment(),"ARMS");
+        adapter2.AddFragment(new ImageLegFragment(),"LEGS");
+        adapter2.AddFragment(new ImageCalfFragment(),"CALF");
+
         //adapter Setup
         viewPager.setAdapter(adapter);
+        imvviewPager.setAdapter(adapter2);
         tabLayout.setupWithViewPager(viewPager);
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            private int  mScrollState = ViewPager.SCROLL_STATE_IDLE;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (mScrollState == ViewPager.SCROLL_STATE_IDLE){
+                    return;
+                }imvviewPager.scrollTo(viewPager.getScrollX(),imvviewPager.getScrollY());
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                mScrollState = state;
+                if (state == ViewPager.SCROLL_STATE_IDLE){
+                    imvviewPager.setCurrentItem(viewPager.getCurrentItem(),false);
+                }
+            }
+        });
+        imvviewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            private int mScrollState = ViewPager.SCROLL_STATE_IDLE;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
+                    return;
+                }
+                viewPager.scrollTo(imvviewPager.getScrollX(), viewPager.getScrollY());
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                mScrollState = state;
+                if (state == ViewPager.SCROLL_STATE_IDLE) {
+                    viewPager.setCurrentItem(imvviewPager.getCurrentItem(), false);
+                }
+            }
+        });
+
+
 
 //Navigation drawer
         nvDrawer = findViewById(R.id.nvView);
@@ -170,8 +231,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
@@ -197,4 +256,6 @@ public class MainActivity extends AppCompatActivity {
 
         backPressedTime = System.currentTimeMillis();
     }
+
+
 }

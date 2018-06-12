@@ -34,8 +34,8 @@ public class Suggest_itemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggest_item);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setSubtitle("Exercise Recommend");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setSubtitle("Exercise Recommend");
 
         //  Get intent
         Intent intentForAge = getIntent();
@@ -219,6 +219,167 @@ public class Suggest_itemActivity extends AppCompatActivity {
     }
 
     private void prepareListDatafor65Plus() {
+
+        // get the listview
+        ExpandableListView expListView = findViewById(R.id.ExpandLV);
+
+        final ArrayList<GroupItem> groupArray = new ArrayList<>();
+        GroupItem groupItem;
+        String groupName;
+        ArrayList<ChildItem> childArrayList;
+
+        groupName = "CHEST";
+        childArrayList = new ArrayList<>();
+
+        dbHelper = new DatabaseHelper(this);
+        dbHelper.openDatabase();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Chest' and Exer_ID in (2, 5, 6, 7, 8)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "BACK";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Back' and Exer_ID in (12, 13)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "SHOULDERS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Shoulder' and Exer_ID in (17, 20)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "ABS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Abs' and Exer_ID in (22, 26)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "ARMS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Arms' and Exer_ID in (27, 28 ,31 ,32)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "LEGS";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Leg' and Exer_ID in (36, 37)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+        groupName = "CALF";
+        childArrayList = new ArrayList<>();
+
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Calf' and Exer_ID in (39)");
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    ChildItem item = new ChildItem();
+                    item.set_id(cursor.getInt(0));
+                    item.setText(cursor.getString(1));
+
+                    childArrayList.add(item);
+
+                } while (cursor.moveToNext());
+            }
+        }
+        groupItem = new GroupItem(groupName, childArrayList);
+        groupArray.add(groupItem);
+
+//  Adapter
+        ExpandableListAdapter adapter = new ExpandableListAdapter(this, groupArray);
+        expListView.setAdapter(adapter);
+
+        // On ChildClick
+        final ArrayList<ChildItem> ChildArrayList = childArrayList;    // ChildArrayList is add final
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int gPos, int cPos, long l) {
+                //String item = groupArray.get(gPos).childItems.get(cPos).text;
+                Intent intent = new Intent(Suggest_itemActivity.this, ChestDetailActivity.class);
+                intent.putExtra("ID",groupArray.get(gPos).childItems.get(cPos).get_id()+"");
+                startActivity(intent);
+                return true;
+            }
+        });
     }
 
     @Override

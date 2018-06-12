@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".In_Navigation_Menu.Calorie.femaleCalorieFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/defaultcolor">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="อายุ (ปี)"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="น้ำหนักตัว (กิโลกรัม)"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:ems="10"
+                android:hint="ส่วนสูง (เซนติเมตร)"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="กิจกรรมในแต่ละวัน" />
+
+            <RadioGroup
+                android:id="@+id/RdG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <RadioButton
+                    android:id="@+id/rdbt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="นั่งทำงานอยู่กับที่ และไม่ได้ออกกำลังกายเลย หรือน้อยมาก"
+                    android:checked="false"/>
+                <RadioButton
+                    android:id="@+id/rdbt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาเล็กน้อย 1-3 วัน/สัปดาห์, เดินบ้างเล็กน้อย ทำงานออฟฟิศ"
+                    android:checked="false"/>
+                <RadioButton
+                    android:id="@+id/rdbt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาปานกลาง 3-5 วัน/สัปดาห์, เคลื่อนที่ตลอดเวลา"
+                    android:checked="false"/>
+                <RadioButton
+                    android:id="@+id/rdbt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก 6-7 วัน/สัปดาห์"
+                    android:checked="false"/>
+                <RadioButton
+                    android:id="@+id/rdbt5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก หรือเป็นนักกีฬา ทำงานที่ใช้แรงงานมาก"
+                    android:checked="false"/>
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnreset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="รีเซ็ตค่าใหม่" />
+
+                <Button
+                    android:id="@+id/btnresult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:enabled="false"
+                    android:text="คำนวณ" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ผลลัพธ์" />
+
+            <TextView
+                android:id="@+id/tvresult"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
