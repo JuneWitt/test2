@@ -23,6 +23,7 @@
                 android:id="@+id/edt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:hint="อายุ (ปี)"
@@ -32,6 +33,7 @@
                 android:id="@+id/edt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:hint="น้ำหนักตัว (กิโลกรัม)"
@@ -41,7 +43,7 @@
                 android:id="@+id/edt3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
                 android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:hint="ส่วนสูง (เซนติเมตร)"
@@ -51,6 +53,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_semi_transparent"
                 android:text="กิจกรรมในแต่ละวัน" />
 
             <RadioGroup
@@ -124,6 +128,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black_semi_transparent"
                 android:text="ผลลัพธ์" />
 
             <TextView

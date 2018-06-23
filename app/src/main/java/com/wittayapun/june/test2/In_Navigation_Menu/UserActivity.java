@@ -66,7 +66,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
        //myDatabase = openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -123,8 +123,9 @@ public class UserActivity extends AppCompatActivity {
                     @Override
                     public void onClick(PromptDialog dialog) {
                         dialog.dismiss();
-                        //Intent MainIntent = new Intent(UserActivity.this, MainActivity.class);
-                        //startActivity(MainIntent);
+                        Intent MainIntent = new Intent(UserActivity.this, MainActivity.class);
+                        startActivity(MainIntent);
+                        finish();
 
                     }
                 }).show();
@@ -169,65 +170,8 @@ public class UserActivity extends AppCompatActivity {
         builder.show();
     }
 
-    /*
-    private boolean inputsAreCorrect(String fname, String lname, String age,String w,String h) {
-        if (fname.isEmpty()) {
-            firstname.setError("Please enter a name");
-            firstname.requestFocus();
-            return false;
-        }
-
-        if (lname.isEmpty()) {
-            lastname.setError("กรุณาใส่ข้อมูล");
-            lastname.requestFocus();
-            return false;
-        }
-
-        if (age.isEmpty() || Integer.parseInt(age) <= 0) {
-            Age.setError("Please enter salary");
-            Age.requestFocus();
-            return false;
-        }
-
-        if (w.isEmpty() || Integer.parseInt(w) <= 0) {
-            weight.setError("Please enter salary");
-            weight.requestFocus();
-            return false;
-        }
-
-        if (h.isEmpty() || Integer.parseInt(h) <= 0) {
-            height.setError("Please enter salary");
-            height.requestFocus();
-            return false;
-        }
-        return true;
-    }
-*/
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
-        return true;
+        return false;
     }
 }
-
-        /*public boolean insertData(String a, String b, String c, int d, int e, int f) {
-            myDatabase = this.getWritableDatabase();
-            ContentValues cv = new ContentValues();
-            cv.put(NAME, a);
-            cv.put(LASTNAME, b);
-            cv.put(GENDER, c);
-            cv.put(AGE, d);
-            cv.put(WEIGHT, e);
-            cv.put(HEIGHT, f);
-            myDatabase.insert(TABLE_NAME,null, cv);
-            long result = myDatabase.insert(TABLE_NAME,null,cv);
-            myDatabase.close();
-
-            //Check
-            if (result == -1) { return false;
-            } else {
-                return true;
-            }
-        }
-        */

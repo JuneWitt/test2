@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/suggest"
+            android:title="@string/ท่าออกกำลังกายที่เหมาะสม"
+            android:icon="@drawable/ic_weightlifting"/>
+    </group>
+    <item
+        android:title="@string/คำนวณ">
+        <menu>
+                <item
+                    android:id="@+id/bmi"
+                    android:title="@string/คำนวณดัชนีมวลกาย"
+                    android:icon="@drawable/ic_scale"/>
+                <item
+                    android:id="@+id/fatpercentage"
+                    android:title="@string/คำนวณเปอร์เซ็นต์ไขมันในร่างกาย"
+                    android:icon="@drawable/ic_bodyfat"/>
+                <item
+                    android:id="@+id/weight"
+                    android:title="@string/น้ำหนักที่เหมาสมกับส่วนสูง"
+                    android:icon="@drawable/ic_yoga"/>
+                <item
+                    android:id="@+id/calorie"
+                    android:title="@string/พลังงานที่ต้องการในแต่ละวัน"
+                    android:icon="@drawable/ic_kcal"/>
+        </menu>
+    </item>
+</menu>

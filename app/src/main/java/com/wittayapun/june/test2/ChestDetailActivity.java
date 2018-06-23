@@ -103,6 +103,12 @@ public class ChestDetailActivity extends Activity {
             }
             cursor.close();
         }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }
     //  itemsID = getIntent().getStringExtra("ID");
     //Toast.makeText(this, getIntent().getStringExtra("ID") + "", Toast.LENGTH_SHORT).show();

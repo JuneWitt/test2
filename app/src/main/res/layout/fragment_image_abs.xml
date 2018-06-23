@@ -6,9 +6,10 @@
     tools:context=".item.imageViewpager.ImageAbsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="ท้อง" />
+        android:src="@drawable/vp_abs"
+        android:scaleType="centerCrop"/>
 
 </FrameLayout>

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //getSupportActionBar().hide();
 
         tabLayout = (TabLayout)findViewById(R.id.tablayout_id);
         appBarLayout = (AppBarLayout)findViewById(R.id.appbarid);
@@ -111,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        ////
+
+        imvviewPager.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
         imvviewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             private int mScrollState = ViewPager.SCROLL_STATE_IDLE;
@@ -120,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 viewPager.scrollTo(imvviewPager.getScrollX(), viewPager.getScrollY());
+
             }
 
             @Override
@@ -136,10 +145,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
 //Navigation drawer
         nvDrawer = findViewById(R.id.nvView);
         View header = nvDrawer.getHeaderView(0);
+        nvDrawer.setItemIconTintList(null);
         mydb = new UserDatabaseHelper(this);
 
         // NAV
@@ -195,13 +204,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id) {
-                    case R.id.user_activity:
-                        // user check
-                        Intent user = new Intent(MainActivity.this, UserActivity.class);
-                        startActivity(user);
-
-                        break;
-
                     case R.id.suggest:
                         Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
                         suggest.putExtra("Data from age",forAge);

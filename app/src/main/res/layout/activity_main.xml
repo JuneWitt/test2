@@ -26,7 +26,7 @@
                android:id="@+id/imvViewpager"
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:layout_margin="15dp">
+               android:padding="5dp">
            </android.support.v4.view.ViewPager>
 
     </android.support.design.widget.AppBarLayout>
@@ -37,6 +37,7 @@
         app:tabGravity="fill"
         app:tabMode="scrollable"
         android:id="@+id/tablayout_id"
+        app:tabSelectedTextColor="@color/tabbindicatorcolor"
         app:tabTextColor="@color/tabtextcolor"
         app:tabIndicatorColor="@color/tabbindicatorcolor"
         android:background="@color/purple2" />
@@ -55,6 +56,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/drawer_view">
+        app:menu="@menu/drawer_view" >
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

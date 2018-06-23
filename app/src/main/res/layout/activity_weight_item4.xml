@@ -7,20 +7,24 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingTop="20dp"
+    android:background="@color/defaultcolor"
     tools:context=".In_Navigation_Menu.Weight_item4Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:background="@drawable/shadowwithwhite"
+        android:elevation="15dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginBottom="15dp">
 
             <com.sevenheaven.segmentcontrol.SegmentControl

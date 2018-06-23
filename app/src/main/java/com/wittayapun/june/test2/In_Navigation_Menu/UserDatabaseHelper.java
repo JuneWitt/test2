@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
@@ -78,6 +79,16 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
 
         if (result == 0) { return false; } else { return true; }
     }
+
+
+    public Cursor checkIfRecordExist() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor query = null;
+        String checkQuery = "select "+Uid+" from "+TABLE_NAME;
+        query = db.rawQuery(checkQuery,null);
+        return query;
+    }
+
 
     //public void deleteData() { }
 }

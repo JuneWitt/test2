@@ -13,25 +13,32 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:background="@drawable/shadowwithwhite">
 
         <TextView
             android:id="@+id/tvDes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black_semi_transparent"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp">
+        android:layout_margin="12dp"
+        android:elevation="@dimen/activity_horizontal_margin"
+        android:background="@drawable/shadowwithwhite">
 
         <ExpandableListView
             android:id="@+id/ExpandLV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:listSelector="#ffc"
+            android:listSelector="@color/blue_semi_transparent_pressed"
             android:indicatorLeft="?android:attr/expandableListPreferredChildIndicatorLeft">
         </ExpandableListView>
 

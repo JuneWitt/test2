@@ -6,15 +6,9 @@
     android:orientation="vertical"
     tools:context=".ChestDetailActivity">
 
-    <LinearLayout
-        android:id="@+id/ShowDetail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/gif_view"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="230dp"
             android:scaleType="fitXY" />
 
@@ -47,9 +41,8 @@
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
                     android:layout_marginTop="3dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/แดงแจ๊"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/M_MainGroup"
                     android:gravity="left"/>
@@ -60,8 +53,16 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerM_SecondGroup"
@@ -71,10 +72,9 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:text="@string/M_SecondGroup"
                     android:textColor="@color/green1"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -83,8 +83,15 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerEquipment"
@@ -94,9 +101,8 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/black_semi_transparent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/Equipment"/>
 
@@ -106,8 +112,15 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp" />
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerPosture"
@@ -117,9 +130,8 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/black_semi_transparent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/Posture"/>
 
@@ -129,8 +141,15 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerContraction"
@@ -140,9 +159,8 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/black_semi_transparent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/M_Contraction"/>
 
@@ -152,8 +170,15 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerRepSet"
@@ -163,9 +188,8 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/black_semi_transparent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/RepSet"/>
 
@@ -175,8 +199,15 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/headerRestTime"
@@ -186,9 +217,8 @@
                     android:paddingBottom="4dp"
                     android:paddingLeft="8dp"
                     android:paddingRight="4dp"
-                    android:background="@color/defaultcolor"
                     android:textColor="@color/black_semi_transparent"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="@string/RestTime"/>
 
@@ -198,10 +228,16 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="4dp"/>
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"/>
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider"
+                    android:layout_marginBottom="5dp" />
 
             </LinearLayout>
         </ScrollView>
-    </LinearLayout>
 </LinearLayout>

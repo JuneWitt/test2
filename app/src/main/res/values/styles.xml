@@ -12,13 +12,11 @@
             <item name="android:textColor">@color/white</item>
         </style>
 
-    <style name="custom_actionbar_style" parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/custom_style</item>
+    <style name="Fullscreen" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
 
-    <style name="custom_style" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">placcolour_or_pic</item>
+    <style name="SplashTheme" parent="Fullscreen">
+        <item name="android:windowBackground">@drawable/side_nav_bar</item> <!--splash pic-->
     </style>
-
 
 </resources>

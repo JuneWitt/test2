@@ -44,11 +44,11 @@ public class Suggest_itemActivity extends AppCompatActivity {
         TextView showSuggest = findViewById(R.id.tvDes);
 
         if (Age <=0) { showSuggest.setText("Error Data(age) ,No exercise recommend for you");prepareListData();// preparing list data in expandable listView
-        } else if (Age < 15 ){showSuggest.setText(" ในช่วงอยุของท่าน การเจริญเติบโต และพัฒนาการด้านร่างกายยังไม่แข็งแรงมาก แต่สามารถเล่นได้ทุกท่า ด้วยน้ำหนักเบาถึงเบามาก");prepareListData();
-        } else if (Age > 15 && Age <=39) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อแน่น และมวลกระดูก อยู่ในระดับดีมาก สามารถเล่นได้ทุกท่า โดยใช้น้ำหนักมากได้");prepareListData();
-        } else if (Age > 39 && Age <=55) {showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับปานกลาง สามารถเล่นได้ทุกท่า และควรใช้น้ำหนักปานกลาง");prepareListData();
-        } else if (Age > 55 && Age <=64) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับค่อนข้างน้อย สามารถเล่นได้ทุกท่า แต่ควรใช้น้ำหนักน้อยถึงปานกลาง");prepareListData();
-        } else if (Age >65) { showSuggest.setText(" ในช่วงอยุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก"); prepareListDatafor65Plus();}
+        } else if (Age < 15 ){showSuggest.setText("     ในช่วงอายุของท่าน การเจริญเติบโต และพัฒนาการด้านร่างกายยังไม่แข็งแรงมาก แต่สามารถเล่นได้ทุกท่าด้วยน้ำหนักเบาถึงเบามาก");prepareListData();
+        } else if (Age > 15 && Age <=39) { showSuggest.setText("        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อแน่น และมวลกระดูก อยู่ในระดับดีมาก สามารถเล่นได้ทุกท่า ้วยใช้น้ำหนักมากได้");prepareListData();
+        } else if (Age > 39 && Age <=55) {showSuggest.setText("         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับปานกลาง สามารถเล่นได้ทุกท่า และควรใช้น้ำหนักปานกลาง");prepareListData();
+        } else if (Age > 55 && Age <=64) { showSuggest.setText("        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับค่อนข้างน้อย สามารถเล่นได้ทุกท่า แต่ควรใช้น้ำหนักน้อยถึงปานกลาง");prepareListData();
+        } else if (Age >65) { showSuggest.setText("         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก"); prepareListDatafor65Plus();}
 
     }
 
@@ -203,6 +203,10 @@ public class Suggest_itemActivity extends AppCompatActivity {
 //  Adapter
         ExpandableListAdapter adapter = new ExpandableListAdapter(this, groupArray);
         expListView.setAdapter(adapter);
+
+
+
+
 
      // On ChildClick
         final ArrayList<ChildItem> ChildArrayList = childArrayList;    // ChildArrayList is add final
