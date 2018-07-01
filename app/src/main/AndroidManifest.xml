@@ -17,7 +17,7 @@
         >
         <!--application element-->
 
-        <activity android:name=".Splash_screen.SplashScreen" android:screenOrientation="portrait"
+        <activity android:name=".Splash_screen.SplashScreen" android:configChanges="orientation" android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -27,26 +27,27 @@
 
         </activity>
 
-        <activity android:name=".MainActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:configChanges="orientation" android:screenOrientation="portrait" />
 
-        <activity android:name=".ChestDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ChestDetailActivity" android:configChanges="orientation" android:screenOrientation="portrait" />
 
         <activity
-            android:name=".In_Navigation_Menu.Suggest_itemActivity" android:screenOrientation="portrait"
+            android:name=".In_Navigation_Menu.Suggest_itemActivity" android:configChanges="orientation" android:screenOrientation="portrait"
             android:label="@string/ท่าออกกำลังกายที่เหมาะสม" />
         <activity
-            android:name=".In_Navigation_Menu.Bmi_item2Activity" android:screenOrientation="portrait"
+            android:name=".In_Navigation_Menu.Bmi_item2Activity" android:configChanges="orientation" android:screenOrientation="portrait"
             android:label="@string/คำนวณดัชนีมวลกาย" />
         <activity
-            android:name=".In_Navigation_Menu.Bodyfat_item3Activity" android:screenOrientation="portrait"
+            android:name=".In_Navigation_Menu.Bodyfat_item3Activity" android:configChanges="orientation" android:screenOrientation="portrait"
             android:label="@string/คำนวณเปอร์เซ็นต์ไขมันในร่างกาย" />
         <activity
-            android:name=".In_Navigation_Menu.Weight_item4Activity" android:screenOrientation="portrait"
+            android:name=".In_Navigation_Menu.Weight_item4Activity" android:configChanges="orientation" android:screenOrientation="portrait"
             android:label="@string/น้ำหนักที่เหมาสมกับส่วนสูง" />
         <activity
-            android:name=".In_Navigation_Menu.Calorie_item5Activity" android:label="@string/พลังงานที่ต้องการในแต่ละวัน" />
-        <activity android:name=".In_Navigation_Menu.UserActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity" android:screenOrientation="portrait"/>
+            android:name=".In_Navigation_Menu.Calorie_item5Activity" android:configChanges="orientation" android:screenOrientation="portrait"
+            android:label="@string/พลังงานที่ต้องการในแต่ละวัน" />
+        <activity android:name=".In_Navigation_Menu.UserActivity" android:configChanges="orientation" android:screenOrientation="portrait"/>
+        <activity android:name=".In_Navigation_Menu.ActivityWhenHaveUser.EditDetailActivity" android:configChanges="orientation" android:screenOrientation="portrait"/>
 
     </application>
 

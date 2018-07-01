@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -43,13 +44,13 @@ public class Suggest_itemActivity extends AppCompatActivity {
 
         TextView showSuggest = findViewById(R.id.tvDes);
 
-        if (Age <=0) { showSuggest.setText("Error Data(age) ,No exercise recommend for you");prepareListData();// preparing list data in expandable listView
-        } else if (Age < 15 ){showSuggest.setText("     ในช่วงอายุของท่าน การเจริญเติบโต และพัฒนาการด้านร่างกายยังไม่แข็งแรงมาก แต่สามารถเล่นได้ทุกท่าด้วยน้ำหนักเบาถึงเบามาก");prepareListData();
-        } else if (Age > 15 && Age <=39) { showSuggest.setText("        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อแน่น และมวลกระดูก อยู่ในระดับดีมาก สามารถเล่นได้ทุกท่า ้วยใช้น้ำหนักมากได้");prepareListData();
-        } else if (Age > 39 && Age <=55) {showSuggest.setText("         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับปานกลาง สามารถเล่นได้ทุกท่า และควรใช้น้ำหนักปานกลาง");prepareListData();
-        } else if (Age > 55 && Age <=64) { showSuggest.setText("        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับค่อนข้างน้อย สามารถเล่นได้ทุกท่า แต่ควรใช้น้ำหนักน้อยถึงปานกลาง");prepareListData();
-        } else if (Age >65) { showSuggest.setText("         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก"); prepareListDatafor65Plus();}
-
+        if (Age <=0) { showSuggest.setText(Html.fromHtml("<b>อายุของท่านไม่ถูกต้อง ,โปรดใส่อายุที่เป็นความจริง</b>"));// preparing list data in expandable listView
+        } else if (Age < 15 ){showSuggest.setText(Html.fromHtml("<b>     ในช่วงอายุของท่าน การเจริญเติบโต และพัฒนาการด้านร่างกายยังไม่แข็งแรงมาก แต่สามารถเล่นได้ทุกท่าด้วยน้ำหนักเบาถึงเบามาก</b>"));prepareListData();
+        } else if (Age > 15 && Age <=39) { showSuggest.setText(Html.fromHtml("<b>        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อแน่น และมวลกระดูก อยู่ในระดับดีมาก สามารถเล่นได้ทุกท่า ้วยใช้น้ำหนักมากได้</b>"));prepareListData();
+        } else if (Age > 39 && Age <=55) {showSuggest.setText(Html.fromHtml("<b>         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับปานกลาง สามารถเล่นได้ทุกท่า และควรใช้น้ำหนักปานกลาง</b>"));prepareListData();
+        } else if (Age > 55 && Age <=64) { showSuggest.setText(Html.fromHtml("<b>        ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับค่อนข้างน้อย สามารถเล่นได้ทุกท่า แต่ควรใช้น้ำหนักน้อยถึงปานกลาง</b>"));prepareListData();
+        } else if (Age >65) { showSuggest.setText(Html.fromHtml("<b>         ในช่วงอายุของท่าน มีความแข็งแรงของกล้ามเนื้อ มวลกล้ามเนื้อ และมวลกระดูก อยู่ในระดับน้อยถึงน้อยมาก สามารถเล่นได้บางท่า และต้องใช้น้ำหนักน้อยถึงน้อยมาก</b>")); prepareListDatafor65Plus();
+        }
     }
 
     private void prepareListData() {
@@ -333,7 +334,7 @@ public class Suggest_itemActivity extends AppCompatActivity {
         groupName = "LEGS";
         childArrayList = new ArrayList<>();
 
-        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Leg' and Exer_ID in (36, 37)");
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Leg' and Exer_ID in (34, 35)");
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
@@ -352,7 +353,7 @@ public class Suggest_itemActivity extends AppCompatActivity {
         groupName = "CALF";
         childArrayList = new ArrayList<>();
 
-        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Calf' and Exer_ID in (39)");
+        cursor = dbHelper.QueryData("select * from Exer_list where M_Group = 'Calf' and Exer_ID in (37)");
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {

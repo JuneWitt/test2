@@ -166,6 +166,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent edit = new Intent(getApplicationContext(),EditDetailActivity.class);
+                if (mDrawer.isDrawerOpen(nvDrawer)) {
+                    mDrawer.closeDrawer(GravityCompat.START);
+                }
                 startActivity(edit);
             }
         });
@@ -208,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent suggest = new Intent(MainActivity.this,Suggest_itemActivity.class);
                         suggest.putExtra("Data from age",forAge);
                         Toast.makeText(MainActivity.this,"intent = "+forAge,Toast.LENGTH_SHORT).show();
-                        mDrawer.closeDrawer(GravityCompat.START);
                         startActivity(suggest);
                         break;
                     case R.id.bmi:

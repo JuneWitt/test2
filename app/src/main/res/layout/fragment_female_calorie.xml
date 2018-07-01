@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/defaultcolor">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,43 +20,61 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edt1"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:layout_marginBottom="5dp"
-                android:ems="10"
-                android:hint="อายุ (ปี)"
-                android:inputType="number" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/edt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:layout_marginBottom="5dp"
-                android:ems="10"
-                android:hint="น้ำหนักตัว (กิโลกรัม)"
-                android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/edt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                    android:ems="10"
+                    android:hint="อายุ (ปี)"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edt3"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
-                android:hint="ส่วนสูง (เซนติเมตร)"
-                android:inputType="numberDecimal" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                    android:ems="10"
+                    android:hint="น้ำหนักตัว (กิโลกรัม)"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                    android:ems="10"
+                    android:hint="ส่วนสูง (เซนติเมตร)"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5" />
+            </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:textStyle="bold"
+                android:text="กิจกรรมในแต่ละวัน"
                 android:textColor="@color/black_semi_transparent"
-                android:text="กิจกรรมในแต่ละวัน" />
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/RdG"
@@ -68,35 +87,39 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="นั่งทำงานอยู่กับที่ และไม่ได้ออกกำลังกายเลย หรือน้อยมาก"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="นั่งทำงานอยู่กับที่ และไม่ได้ออกกำลังกายเลย หรือน้อยมาก" />
+
                 <RadioButton
                     android:id="@+id/rdbt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="ออกกำลังกายหรือเล่นกีฬาเล็กน้อย 1-3 วัน/สัปดาห์, เดินบ้างเล็กน้อย ทำงานออฟฟิศ"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาเล็กน้อย 1-3 วัน/สัปดาห์, เดินบ้างเล็กน้อย ทำงานออฟฟิศ" />
+
                 <RadioButton
                     android:id="@+id/rdbt3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="ออกกำลังกายหรือเล่นกีฬาปานกลาง 3-5 วัน/สัปดาห์, เคลื่อนที่ตลอดเวลา"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาปานกลาง 3-5 วัน/สัปดาห์, เคลื่อนที่ตลอดเวลา" />
+
                 <RadioButton
                     android:id="@+id/rdbt4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก 6-7 วัน/สัปดาห์"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก 6-7 วัน/สัปดาห์" />
+
                 <RadioButton
                     android:id="@+id/rdbt5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก หรือเป็นนักกีฬา ทำงานที่ใช้แรงงานมาก"
-                    android:checked="false"/>
+                    android:checked="false"
+                    android:text="ออกกำลังกายหรือเล่นกีฬาอย่างหนัก หรือเป็นนักกีฬา ทำงานที่ใช้แรงงานมาก" />
 
             </RadioGroup>
 
@@ -128,16 +151,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textStyle="bold"
+                android:text="ผลลัพธ์"
                 android:textColor="@color/black_semi_transparent"
-                android:text="ผลลัพธ์" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvresult"
-                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:gravity="center"
                 android:textSize="25sp" />
         </LinearLayout>
     </ScrollView>

@@ -4,107 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:background="@color/defaultcolor"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".In_Navigation_Menu.UserActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/activity_horizontal_margin"
-        android:gravity="top|center"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:background="@drawable/shadowwithwhite"
-        android:elevation="15dp">
-
-    <EditText
-        android:id="@+id/firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ชื่อ" />
-
-    <EditText
-        android:id="@+id/lastname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="นามสกุล" />
-
-    <LinearLayout
-        android:id="@+id/gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="เพศ :"
-            android:textSize="17dp"/>
-
-        <Spinner
-            android:id="@+id/spinnerGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/gender" />
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:ems="10"
-        android:inputType="number"
-        android:maxLength="2"
-        android:hint="อายุ" />
-
-    <EditText
-        android:id="@+id/w"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:maxLength="6"
-        android:hint="น้ำหนัก (กิโลกรัม)" />
-
-    <EditText
-        android:id="@+id/h"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:maxLength="7"
-        android:hint="ส่วนสูง (เซนติเมตร)" />
-
-    <Button
-        android:id="@+id/createUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="ยืนยัน"
-        android:enabled="false"/>
-    <Button
-        android:visibility="gone"
-        android:id="@+id/btnviewAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/shadowwithwhite"
+        android:elevation="15dp"
+        android:gravity="top|center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/activity_horizontal_margin">
 
-        android:text="ดูข้อมูล" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="ชื่อ"
+                android:inputType="textPersonName"
+                android:maxLength="10" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:ems="10"
+                android:hint="นามสกุล"
+                android:inputType="textPersonName"
+                android:maxLength="10" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="เพศ :"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/gender" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:ems="10"
+                android:hint="อายุ"
+                android:inputType="number"
+                android:maxLength="2" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/w"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:ems="10"
+                android:hint="น้ำหนัก (กิโลกรัม)"
+                android:inputType="numberDecimal"
+                android:maxLength="5" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                android:ems="10"
+                android:hint="ส่วนสูง (เซนติเมตร)"
+                android:inputType="numberDecimal"
+                android:maxLength="5" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/createUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:enabled="false"
+            android:text="ยืนยัน" />
+
+        <Button
+            android:id="@+id/btnviewAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ดูข้อมูล"
+
+            android:visibility="gone" />
 
     </LinearLayout>
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.wittayapun.june.test2.In_Navigation_Menu;
 
+import android.database.Cursor;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,6 +18,9 @@ import com.wittayapun.june.test2.R;
 
 public class Bodyfat_item3Activity extends AppCompatActivity {
 
+    UserDatabaseHelper userDB;
+    String sex = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +30,38 @@ public class Bodyfat_item3Activity extends AppCompatActivity {
         getSupportActionBar().setSubtitle("Lean Body Mass (LBM)");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         //.setBackgroundColor(Color.zzz);
+        userDB = new UserDatabaseHelper(this);
 
-        SegmentControl segment = (SegmentControl)findViewById(R.id.segment);
+        Cursor cursor = userDB.getReadData();
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                do {
+                    sex = cursor.getString(3);
+                } while (cursor.moveToNext());
+            }
+        }
+
+        Fragment fragment = null;
+        if (sex.equals("ชาย")) {
+            fragment = new male_lbm_Fragment();
+        } else {
+            fragment = new female_lbm_Fragment();}
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.placefragment,fragment);
+        transaction.commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        this.finish();
+        return true;
+    }
+}
+/*
+            //SegmentControl segment = (SegmentControl)findViewById(R.id.segment);
 
         segment.setOnSegmentControlClickListener(new SegmentControl.OnSegmentControlClickListener() {
             @Override
@@ -44,12 +78,5 @@ public class Bodyfat_item3Activity extends AppCompatActivity {
                 transaction.commit();
             }
         });
+        */
 
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
-        return true;
-    }
-}

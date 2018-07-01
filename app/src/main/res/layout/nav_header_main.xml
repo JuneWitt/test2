@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name : "
+                android:text="ชื่อ : "
                 android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/FirstShow"
@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gender : "
+                android:text="เพศ : "
                 android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/genderShow"
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="age : "
+                android:text="อายุ : "
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/ageShow"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="weight : "
+                android:text="น้ำหนัก : "
                 android:textColor="@color/white"/>
             <TextView
                 android:id="@+id/WShow"
@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="height : "
+                android:text="ความสูง : "
                 android:textColor="@color/white" />
             <TextView
                 android:id="@+id/HShow"

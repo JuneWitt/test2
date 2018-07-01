@@ -21,8 +21,9 @@
             android:id="@+id/tvDes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
+            android:padding="6dp"
             android:textColor="@color/black_semi_transparent"/>
 
     </LinearLayout>
