@@ -1,6 +1,5 @@
 package com.wittayapun.june.test2.In_Navigation_Menu.WeightForHeight;
 
-
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -27,6 +26,7 @@ public class maleWeightFragment extends Fragment {
     private UserDatabaseHelper userDB;
     private EditText edtH;
     private Button reset, result;
+    private double h;
 
     public maleWeightFragment() {
         // Required empty public constructor
@@ -40,10 +40,10 @@ public class maleWeightFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*
+
             String heightInput = edtH.getText().toString().trim();
             result.setEnabled(!heightInput.isEmpty());
-            */
+
         }
 
         @Override
@@ -76,20 +76,31 @@ public class maleWeightFragment extends Fragment {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                double h = Integer.parseInt(edtH.getText().toString());
+                //try {
+                    h = Integer.parseInt(edtH.getText().toString());
+                //}catch (Exception e){
+            //}
                 double bws = (h-100)*0.9;
                 DecimalFormat decimalFormat = new DecimalFormat("##.#");
+/*
+                if (edtH == null) {
+                    showresult.setText("กรุณากรอกข้อมูลให้ครบ");
+                }
+                */
 
-                if (bws >= 300 && bws <= 0) { showresult.setText("กรุณากรอกข้อมูลที่เป็นความจริง");
-                }else { showresult.setText("น้ำหนักที่เหมาะสมขอคุณ คือ " + decimalFormat.format(bws) + " กิโลกรัม"); }
+                if (bws >= 300 || bws <= 0) {
+                    showresult.setText("กรุณากรอกข้อมูลที่เป็นความจริง");
+                } else {
+                    showresult.setText("น้ำหนักที่เหมาะสมของคุณ คือ " + decimalFormat.format(bws) + " กิโลกรัม");
+                }
             }
         });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtH.getText().clear();
+                edtH.setText("");
+                result.setEnabled(false);
                 showresult.setText(null);
             }
         });

@@ -32,6 +32,7 @@ public class maleCalorieFragment extends Fragment {
     private RadioButton rb1,rb2,rb3,rb4,rb5;
     private Button reset,result;
     private TextView tvresult;
+    private double age,w,h;
 
     public maleCalorieFragment() {
         // Required empty public constructor
@@ -45,7 +46,7 @@ public class maleCalorieFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*
+/*
             String ageInput = edtAge.getText().toString().trim();
             String weightInput = edtW.getText().toString().trim();
             String heightInput = edtH.getText().toString().trim();
@@ -99,10 +100,18 @@ public class maleCalorieFragment extends Fragment {
                     e.printStackTrace();
                 }
   //CALCULATE
-                double age =Integer.parseInt(edtAge.getText().toString());
-                double w =Integer.parseInt(edtW.getText().toString());
-                double h =Integer.parseInt(edtH.getText().toString());
-
+                try{
+                age =Integer.parseInt(edtAge.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
+                try {
+                    w = Integer.parseInt(edtW.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
+                try {
+                    h = Integer.parseInt(edtH.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
                 //66 + (13.7 x น้ำหนักตัว (กิโลกรัม))+(5 x ส่วนสูง (เซนติเมตร))-(6.8 x อายุ)
                 double BMR = 66+(13.7*w)+(5*h)-(6.8*age);
 
@@ -112,28 +121,45 @@ public class maleCalorieFragment extends Fragment {
                 double activity4 = BMR*1.725;
                 double activity5 = BMR*1.9;
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+/*
+                if (edtAge.getText() == null || edtAge.getText().toString().equals("") || edtW.getText() == null || edtW.getText().toString().equals("")
+                        || edtH.getText() == null || edtH.getText().toString().equals("") ){
+                    tvresult.setText("กรุณากรอกข้อมูลให้ครบ");*/
 
-                if (rb1.isChecked() && result.isEnabled()) { tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity1)+" กิโลแคลอรี่");
-                } else if (rb2.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity2)+" กิโลแคลอรี่");
-                } else if (rb3.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity3)+" กิโลแคลอรี่");
-                } else if (rb4.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity4)+" กิโลแคลอรี่");
-                } else if (rb5.isChecked() && result.isEnabled()) { tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity5) + " กิโลแคลอรี่");
-                }else {tvresult.setText("กรุณากรอกข้อมูลให้ครบ");
-                }
+
+                //if (edtAge.getText() != null || edtW.getText() != null || edtH.getText() != null){
+                    //tvresult.setText("กรุณากรอกข้อมูลให้ครบ");
+                    if (rb1.isChecked()) {
+                        tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity1) + " กิโลแคลอรี่");
+                    } else if (rb2.isChecked()) {
+                        tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity2) + " กิโลแคลอรี่");
+                    } else if (rb3.isChecked()) {
+                        tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity3) + " กิโลแคลอรี่");
+                    } else if (rb4.isChecked()) {
+                        tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity4) + " กิโลแคลอรี่");
+                    } else if (rb5.isChecked()) {
+                        tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity5) + " กิโลแคลอรี่");
+                    }else {
+                          tvresult.setText("กรุณากรอกข้อมูลให้ครบ");
+                    }
+
+                //}else {
+                    //tvresult.setText("กรุณากรอกข้อมูลให้ครบ");
+                //}
             }
         });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtAge.getText().clear();
-                edtW.getText().clear();
-                edtH.getText().clear();
+                edtAge.setText("");
+                edtW.setText("");
+                edtH.setText("");
+                //result.setEnabled(false);
                 radioGroup.clearCheck();
                 tvresult.setText(null);
             }
         });
-
         return view;
     }
 

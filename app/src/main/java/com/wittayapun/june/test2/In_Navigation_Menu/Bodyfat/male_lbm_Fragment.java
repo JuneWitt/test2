@@ -45,12 +45,13 @@ public class male_lbm_Fragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*
-            String weightInput = edtw.getText().toString().trim();
-            String heightInput = edtwaist.getText().toString().trim();
 
-            result.setEnabled(!weightInput.isEmpty() && !heightInput.isEmpty());
-            */
+            String weightInput = edtw.getText().toString().trim();
+            String waistInput = edtwaist.getText().toString().trim();
+
+            result.setEnabled(!weightInput.isEmpty() && !waistInput.isEmpty());
+
+
         }
 
         @Override
@@ -108,15 +109,15 @@ public class male_lbm_Fragment extends Fragment {
                 DecimalFormat decimalFormat = new DecimalFormat("##.#");
 
                 if (fatpercentage >= 35.00) {
-                    showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat35);
-                } else if (fatpercentage >= 30.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat30);
-                } else if (fatpercentage >= 25.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat25);
-                } else if (fatpercentage >= 20.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat20);
-                } else if (fatpercentage >= 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat15);
-                } else if (fatpercentage >= 12.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat12);
-                } else if (fatpercentage >= 8.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat8);
-                } else if (fatpercentage < 8.00 && fatpercentage >=0) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที่: " + decimalFormat.format(fatpercentage) +" % ของน้ำหนักตัวทั้งหมด"+ "\n" + "คำเตือน!: ห้ามไขมันต่ำกว่า 2%-5%\n" + "เพราะจะเป็นไขมันที่จำเป็นต่อร่างกาย");
-                } else if (fatpercentage < 0) { showresult.setText("กรุณาใส่ข้อมูลที่เป็นความจริง");
+                    showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat35);
+                } else if (fatpercentage >= 30.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน" + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat30);
+                } else if (fatpercentage >= 25.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat25);
+                } else if (fatpercentage >= 20.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat20);
+                } else if (fatpercentage >= 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat15);
+                } else if (fatpercentage >= 12.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat12);
+                } else if (fatpercentage >= 8.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fat8);
+                } else if (fatpercentage < 8.00 && fatpercentage >=0) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) +" % ของน้ำหนักตัวทั้งหมด"+ "\n" + "คำเตือน!: ห้ามไขมันต่ำกว่า 2%-5%\n" + "เพราะจะเป็นไขมันที่จำเป็นต่อร่างกาย");
+                } else if (fatpercentage <= 0 || fatpercentage >= 100) { showresult.setText("กรุณาใส่ข้อมูลที่เป็นความจริง");
                 } else {
                     showresult.setText("กรุณากรอกข้อมูลให้ครบ");
                 }
@@ -126,8 +127,9 @@ public class male_lbm_Fragment extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtw.getText().clear();
-                edtwaist.getText().clear();
+                edtw.setText("");
+                edtwaist.setText("");
+                result.setEnabled(false);
                 showresult.setText(null);
                 imvfat.setImageDrawable(null);
             }

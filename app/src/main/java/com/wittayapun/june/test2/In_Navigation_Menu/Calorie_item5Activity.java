@@ -24,7 +24,7 @@ public class Calorie_item5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_calorie_item5);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setSubtitle("Basal Metabolic Rate (BMR)");
+        getSupportActionBar().setSubtitle("Total Daily Energy Expenditure (TDEE)");
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         userDB = new UserDatabaseHelper(this);

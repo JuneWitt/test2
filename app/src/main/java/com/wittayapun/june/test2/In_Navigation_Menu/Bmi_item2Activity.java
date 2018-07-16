@@ -103,25 +103,24 @@ public class Bmi_item2Activity extends AppCompatActivity {
                 DecimalFormat decimalFormat = new DecimalFormat("##.##");
 
                 if (ans < 16.00) {
-                    tvresult.setText("BMI: " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 3");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 3");
                 } else if (ans < 17.00) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 2");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 2");
                 } else if (ans < 18.50) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 1");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "ผอม (Underweight)\n" + "น้ำหนักน้อยระดับ 1");
                 } else if (ans < 23.00) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "ค่าน้ำหนักปกติ");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "ค่าน้ำหนักปกติ");
                 } else if (ans < 25.00) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "ค่าน้ำหนักเกิน (Overweight)");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "ค่าน้ำหนักเกิน (Overweight)");
                 } else if (ans < 30.00) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 1");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 1");
                 } else if (ans < 40.00) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 2");
-                } else if (ans > 39.99) {
-                    tvresult.setText("ค่า BMI คือ: " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 3\n" + "เสี่ยงต่อความดันโลหิตสูง\nไขมันในเลือดสูง\nข้อเข่าเสื่อม\nนิ่วในถุงน้ำดี\nตับอักเสบจากไขมันสะสม\n เบาหวาน...");
-                } else if (ans < 0.00 ){
-                    tvresult.setText("กรุณาใส่ข้อมูลที่เป็นความจริง");
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 2");
+                } else if (ans > 39.99 && ans < 100) {
+                    tvresult.setText("ค่า BMI คือ " + decimalFormat.format(ans) + "\n" + "อ้วน (Obesity)\n" + "โรคอ้วนระดับ 3\n" + "เสี่ยงต่อความดันโลหิตสูง\nไขมันในเลือดสูง\nนิ่วในถุงน้ำดี\n เบาหวาน...");
+                } else if (ans <= 0.00 || ans >= 100){
+                    tvresult.setText("กรุณาใส่ข้อมูลที่เป็น\nความจริง");
                 }
-                return;
             }
         });
     }

@@ -45,7 +45,7 @@ public class female_lbm_Fragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*
+
             String weightInput = edtw.getText().toString().trim();
             String wristInput = edtwrist.getText().toString().trim();
             String waistInput = edtwaist.getText().toString().trim();
@@ -54,7 +54,6 @@ public class female_lbm_Fragment extends Fragment {
 
             result.setEnabled(!weightInput.isEmpty() && !wristInput.isEmpty() && !waistInput.isEmpty()
             && !hipInput.isEmpty() && !armInput.isEmpty());
-            */
         }
 
         @Override
@@ -78,14 +77,6 @@ public class female_lbm_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_female_lbm_, container, false);
 
-        /*
-        String wrist = prefs.getString("wrist", "");
-        String waist = prefs.getString("waist", "");
-        String hip = prefs.getString("hip", "");
-        String arm = prefs.getString("arm", "");
-        */
-
-
         edtw = view.findViewById(R.id.edt1);
         //edth = view.findViewById(R.id.edt2);
         edtwrist = view.findViewById(R.id.edt3);
@@ -99,7 +90,7 @@ public class female_lbm_Fragment extends Fragment {
 
         prefs = getActivity().getSharedPreferences("pref_female_lbm",Context.MODE_PRIVATE);
         editor = prefs.edit();
-        //  getpreference
+        //  getPreference
         edtwrist.setText(prefs.getString("pref_wrist", ""));
         edtwaist.setText(prefs.getString("pref_waist", ""));
         edthip.setText(prefs.getString("pref_hip", ""));
@@ -147,16 +138,16 @@ public class female_lbm_Fragment extends Fragment {
                 DecimalFormat decimalFormat = new DecimalFormat("##.#");
 
                 if (fatpercentage >= 45.00) {
-                    showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: "+decimalFormat.format(fatpercentage)+" %");imvfat.setImageResource(R.drawable.fefat45);
-                } else if (fatpercentage >= 40.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat40);
-                } else if (fatpercentage >= 35.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat35);
-                } else if (fatpercentage >= 30.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat30);
-                } else if (fatpercentage >= 25.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: " + decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat25);
-                } else if (fatpercentage >= 20.00) {showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: "+ decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat20);
-                } else if (fatpercentage >= 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat15);
-                } else if (fatpercentage < 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมันอยู่ที: " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat15);
-                }else if (fatpercentage <12 && fatpercentage >=0){showresult.setText("เปอร์เซ็นไขมันของคุณ: "+decimalFormat.format(fatpercentage)+" %"+"\n"+"คำเตือน!: ห้ามไขมันต่ำกว่า 8%-12%\n"+"เพราะจะเป็นไขมันที่จำเป็นต่อร่างกาย");
-                }else if (fatpercentage <0){showresult.setText("กรุณาใส่ข้อมูลที่เป็นความจริง");
+                    showresult.setText("คุณมีเปอร์เซ็นไขมัน "+decimalFormat.format(fatpercentage)+" %");imvfat.setImageResource(R.drawable.fefat45);
+                } else if (fatpercentage >= 40.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat40);
+                } else if (fatpercentage >= 35.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat35);
+                } else if (fatpercentage >= 30.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน "+decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat30);
+                } else if (fatpercentage >= 25.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat25);
+                } else if (fatpercentage >= 20.00) {showresult.setText("คุณมีเปอร์เซ็นไขมัน"+ decimalFormat.format(fatpercentage)+" % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat20);
+                } else if (fatpercentage >= 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat15);
+                } else if (fatpercentage < 15.00) { showresult.setText("คุณมีเปอร์เซ็นไขมัน " + decimalFormat.format(fatpercentage) + " % ของน้ำหนักตัวทั้งหมด");imvfat.setImageResource(R.drawable.fefat15);
+                }else if (fatpercentage <12 && fatpercentage >=0){showresult.setText("คุณมีเปอร์เซ็นไขมัน "+decimalFormat.format(fatpercentage)+" %"+"\n"+"คำเตือน!: ห้ามไขมันต่ำกว่า 8%-12%\n"+"เพราะจะเป็นไขมันที่จำเป็นต่อร่างกาย");
+                }else if (fatpercentage <=0 || fatpercentage >= 100){showresult.setText("กรุณาใส่ข้อมูลที่เป็นความจริง");
                 } else {
                     showresult.setText("กรุณากรอกข้อมูลให้ครบ");
                 }
@@ -166,12 +157,12 @@ public class female_lbm_Fragment extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtw.getText().clear();
-                //edth.getText().clear();
-                edtwrist.getText().clear();
-                edtwaist.getText().clear();
-                edthip.getText().clear();
-                edtarm.getText().clear();
+                edtw.setText("");
+                edtwrist.setText("");
+                edtwaist.setText("");
+                edthip.setText("");
+                edtarm.setText("");
+                result.setEnabled(false);
                 showresult.setText(null);
                 imvfat.setImageDrawable(null);
             }

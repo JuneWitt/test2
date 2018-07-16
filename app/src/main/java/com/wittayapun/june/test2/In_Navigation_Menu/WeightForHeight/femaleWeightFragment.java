@@ -79,15 +79,16 @@ public class femaleWeightFragment extends Fragment {
                 double bws = (h-100)*0.8;
                 DecimalFormat decimalFormat = new DecimalFormat("##.#");
 
-                if (bws >= 300 && bws <= 0) { showresult.setText("กรุณากรอกข้อมูลที่เป็นความจริง");
-                }else { showresult.setText("น้ำหนักที่เหมาะสมขอคุณ คือ " + decimalFormat.format(bws) + " กิโลกรัม"); }
+                if (bws >= 300 || bws <= 0) { showresult.setText("กรุณากรอกข้อมูลที่เป็นความจริง");
+                }else { showresult.setText("น้ำหนักที่เหมาะสมของคุณ คือ " + decimalFormat.format(bws) + " กิโลกรัม"); }
             }
         });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtH.getText().clear();
+                edtH.setText("");
+                result.setEnabled(false);
                 showresult.setText(null);
             }
         });

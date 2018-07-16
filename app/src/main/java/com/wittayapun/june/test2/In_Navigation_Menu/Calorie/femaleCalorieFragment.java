@@ -33,6 +33,7 @@ public class femaleCalorieFragment extends Fragment {
     private RadioGroup radioGroup;
     private RadioButton rb1,rb2,rb3,rb4,rb5;
     private TextView tvresult;
+    private double age, w, h;
 
 
     public femaleCalorieFragment() {
@@ -47,17 +48,16 @@ public class femaleCalorieFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*
-            final String ageInput = edtAge.getText().toString().trim();
-            final String weightInput = edtW.getText().toString().trim();
-            final String heightInput = edtH.getText().toString().trim();
+/*
+            String ageInput = edtAge.getText().toString().trim();
+            String weightInput = edtW.getText().toString().trim();
+            String heightInput = edtH.getText().toString().trim();
 
             result.setEnabled(!ageInput.isEmpty() &&!weightInput.isEmpty() && !heightInput.isEmpty());
-            */
+*/
         }
 
         @Override
-
         public void afterTextChanged(Editable editable) {
 
         }
@@ -100,9 +100,18 @@ public class femaleCalorieFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                double age =Integer.parseInt(edtAge.getText().toString().trim());
-                double w =Integer.parseInt(edtW.getText().toString().trim());
-                double h =Integer.parseInt(edtH.getText().toString().trim());
+                try{
+                    age =Integer.parseInt(edtAge.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
+                try {
+                    w = Integer.parseInt(edtW.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
+                try {
+                    h = Integer.parseInt(edtH.getText().toString().trim());
+                }catch (NumberFormatException e){
+                }
 
                 //665 + (9.6 x น้ำหนักตัว (กิโลกรัม))+(1.8 x ส่วนสูง (เซนติเมตร))-(4.7 x อายุ)
                 double BMR = 665+(9.6*w)+(1.8*h)-(4.7*age);
@@ -114,11 +123,12 @@ public class femaleCalorieFragment extends Fragment {
                 double activity5 = BMR*1.9;
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
-                if (rb1.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity1)+" กิโลแคลอรี่");
-                } else if (rb2.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity2)+" กิโลแคลอรี่");
-                } else if (rb3.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity3)+" กิโลแคลอรี่");
-                } else if (rb4.isChecked() && result.isEnabled()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity4)+" กิโลแคลอรี่");
-                } else if (rb5.isChecked() && result.isEnabled()) { tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity5) + " กิโลแคลอรี่");
+
+                if (rb1.isChecked()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity1)+" กิโลแคลอรี่");
+                } else if (rb2.isChecked()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity2)+" กิโลแคลอรี่");
+                } else if (rb3.isChecked()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity3)+" กิโลแคลอรี่");
+                } else if (rb4.isChecked()) {tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ "+decimalFormat.format(activity4)+" กิโลแคลอรี่");
+                } else if (rb5.isChecked()) { tvresult.setText("ค่าพลังงานที่จำเป็นต่อวันของคุณ คือ " + decimalFormat.format(activity5) + " กิโลแคลอรี่");
                 } else {tvresult.setText("กรุณากรอกข้อมูลให้ครบ");
                 }
             }
@@ -127,11 +137,11 @@ public class femaleCalorieFragment extends Fragment {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edtAge.getText().clear();
-                edtW.getText().clear();
-                edtH.getText().clear();
+                edtAge.setText("");
+                edtW.setText("");
+                edtH.setText("");
+                //result.setEnabled(false);
                 radioGroup.clearCheck();
-                result.setEnabled(false);
                 tvresult.setText(null);
             }
         });
